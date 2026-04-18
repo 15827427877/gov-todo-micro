@@ -1,0 +1,23 @@
+com.gov.todo
+├── GovTodoApplication.java        // 启动类
+├── config
+│   └── MyBatisPlusConfig.java     // MP分页配置
+├── controller
+│   └── TodoItemController.java    // 接口
+├── entity
+│   └── TodoItem.java              // 实体
+├── mapper
+│   └── TodoItemMapper.java        // DAO
+├── service
+│   ├── TodoItemService.java
+│   └── impl
+│       └── TodoItemServiceImpl.java
+├── common
+│   ├── result
+│   │   ├── Result.java
+│   │   └── ResultCode.java
+│   ├── exception
+│   │   ├── BusinessException.java
+│   │   └── GlobalExceptionHandler.java
+└── util
+    └── DateUtil.java（可选）
