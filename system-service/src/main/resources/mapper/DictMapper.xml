@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.DictMapper">
+    <resultMap id="dictMap" type="com.gov.systemservice.pojo.Dict">
+        <id column="id" property="id"/>
+        <result column="dict_type" property="dictType"/>
+        <result column="dict_code" property="dictCode"/>
+        <result column="dict_name" property="dictName"/>
+        <result column="dict_value" property="dictValue"/>
+        <result column="sort" property="sort"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="dictMap">
+        SELECT * FROM sys_dict ORDER BY dict_type, sort
+    </select>
+
+    <select id="selectByType" parameterType="string" resultMap="dictMap">
+        SELECT * FROM sys_dict WHERE dict_type = #{dictType} AND status = 1 ORDER BY sort
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="dictMap">
+        SELECT * FROM sys_dict WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Dict" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_dict (dict_type, dict_code, dict_name, dict_value, sort, status, create_time, update_time)
+        VALUES (#{dictType}, #{dictCode}, #{dictName}, #{dictValue}, #{sort}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.gov.systemservice.pojo.Dict">
+        UPDATE sys_dict
+        SET
+            dict_type = #{dictType},
+            dict_code = #{dictCode},
+            dict_name = #{dictName},
+            dict_value = #{dictValue},
+            sort = #{sort},
+            status = #{status},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM sys_dict WHERE id = #{id}
+    </delete>
+</mapper>

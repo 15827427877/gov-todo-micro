@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.UserRoleMapper">
+    <resultMap id="userRoleMap" type="com.gov.systemservice.pojo.UserRole">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="role_id" property="roleId"/>
+    </resultMap>
+
+    <select id="selectByUserId" parameterType="long" resultMap="userRoleMap">
+        SELECT * FROM sys_user_role WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.UserRole" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user_role (user_id, role_id)
+        VALUES (#{userId}, #{roleId})
+    </insert>
+
+    <delete id="deleteByUserId" parameterType="long">
+        DELETE FROM sys_user_role WHERE user_id = #{userId}
+    </delete>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.RoleMapper">
+    <resultMap id="roleMap" type="com.gov.systemservice.pojo.Role">
+        <id column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_code" property="roleCode"/>
+        <result column="description" property="description"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="roleMap">
+        SELECT * FROM sys_role
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="roleMap">
+        SELECT * FROM sys_role WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Role" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_role (role_name, role_code, description, status, create_time, update_time)
+        VALUES (#{roleName}, #{roleCode}, #{description}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.gov.systemservice.pojo.Role">
+        UPDATE sys_role
+        SET
+            role_name = #{roleName},
+            role_code = #{roleCode},
+            description = #{description},
+            status = #{status},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM sys_role WHERE id = #{id}
+    </delete>
+
+    <select id="selectByUserId" parameterType="long" resultMap="roleMap">
+        SELECT r.* FROM sys_role r
+        JOIN sys_user_role ur ON r.id = ur.role_id
+        WHERE ur.user_id = #{userId}
+    </select>
+</mapper>

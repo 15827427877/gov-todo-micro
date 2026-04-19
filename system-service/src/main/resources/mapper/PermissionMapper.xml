@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.PermissionMapper">
+    <resultMap id="permissionMap" type="com.gov.systemservice.pojo.Permission">
+        <id column="id" property="id"/>
+        <result column="permission_name" property="permissionName"/>
+        <result column="permission_code" property="permissionCode"/>
+        <result column="url" property="url"/>
+        <result column="method" property="method"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="permissionMap">
+        SELECT * FROM sys_permission
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="permissionMap">
+        SELECT * FROM sys_permission WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Permission" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_permission (permission_name, permission_code, url, method, status, create_time, update_time)
+        VALUES (#{permissionName}, #{permissionCode}, #{url}, #{method}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.gov.systemservice.pojo.Permission">
+        UPDATE sys_permission
+        SET
+            permission_name = #{permissionName},
+            permission_code = #{permissionCode},
+            url = #{url},
+            method = #{method},
+            status = #{status},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM sys_permission WHERE id = #{id}
+    </delete>
+
+    <select id="selectByRoleId" parameterType="long" resultMap="permissionMap">
+        SELECT p.* FROM sys_permission p
+        JOIN sys_role_permission rp ON p.id = rp.permission_id
+        WHERE rp.role_id = #{roleId}
+    </select>
+</mapper>

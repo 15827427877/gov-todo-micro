@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.RolePermissionMapper">
+    <resultMap id="rolePermissionMap" type="com.gov.systemservice.pojo.RolePermission">
+        <id column="id" property="id"/>
+        <result column="role_id" property="roleId"/>
+        <result column="permission_id" property="permissionId"/>
+    </resultMap>
+
+    <select id="selectByRoleId" parameterType="long" resultMap="rolePermissionMap">
+        SELECT * FROM sys_role_permission WHERE role_id = #{roleId}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.RolePermission" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_role_permission (role_id, permission_id)
+        VALUES (#{roleId}, #{permissionId})
+    </insert>
+
+    <delete id="deleteByRoleId" parameterType="long">
+        DELETE FROM sys_role_permission WHERE role_id = #{roleId}
+    </delete>
+</mapper>

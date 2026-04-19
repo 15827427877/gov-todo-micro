@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.DepartmentMapper">
+    <resultMap id="departmentMap" type="com.gov.systemservice.pojo.Department">
+        <id column="id" property="id"/>
+        <result column="department_name" property="departmentName"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="level" property="level"/>
+        <result column="sort" property="sort"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="departmentMap">
+        SELECT * FROM sys_department ORDER BY level, sort
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="departmentMap">
+        SELECT * FROM sys_department WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Department" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_department (department_name, parent_id, level, sort, status, create_time, update_time)
+        VALUES (#{departmentName}, #{parentId}, #{level}, #{sort}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.gov.systemservice.pojo.Department">
+        UPDATE sys_department
+        SET
+            department_name = #{departmentName},
+            parent_id = #{parentId},
+            level = #{level},
+            sort = #{sort},
+            status = #{status},
+            update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM sys_department WHERE id = #{id}
+    </delete>
+
+    <select id="selectByParentId" parameterType="long" resultMap="departmentMap">
+        SELECT * FROM sys_department WHERE parent_id = #{parentId} AND status = 1 ORDER BY sort
+    </select>
+</mapper>
