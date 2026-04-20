@@ -1,6 +1,7 @@
 package com.gov.systemservice.controller;
 
 import com.gov.common.Result;
+import com.gov.systemservice.annotation.RequiresPermission;
 import com.gov.systemservice.dto.LoginRequest;
 import com.gov.systemservice.dto.LoginResponse;
 import com.gov.systemservice.dto.RegisterRequest;
@@ -63,6 +64,18 @@ public class UserController {
     @PostMapping("/resetpd")
     public Result<String> resetPassword(@RequestBody ResetPasswordRequest request) {
         return userService.resetPassword(request);
+    }
+
+    /**
+     * 获取用户信息
+     * @param id 用户ID
+     * @return 用户信息
+     */
+    @GetMapping("/{id}")
+    @RequiresPermission("user:read")
+    public Result<User> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        return Result.success(user);
     }
 
     /**

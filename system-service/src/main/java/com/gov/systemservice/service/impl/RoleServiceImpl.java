@@ -53,7 +53,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public boolean deleteRole(Long id) {
-        int result = roleMapper.delete(id);
+        int result = roleMapper.deleteById(id);
         if (result > 0) {
             LogUtils.info(RoleServiceImpl.class, "删除角色成功: {}", id);
             return true;

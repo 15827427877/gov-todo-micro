@@ -20,7 +20,7 @@ import java.util.Map;
 public class JwtUtils {
 
     // 密钥，实际项目中应该从配置文件读取
-    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor("gov-todo-system-secret-key-2026-04-20".getBytes());
 
     // 过期时间：24小时
     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000;

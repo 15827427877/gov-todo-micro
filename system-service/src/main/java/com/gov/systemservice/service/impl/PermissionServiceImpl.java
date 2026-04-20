@@ -53,7 +53,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public boolean deletePermission(Long id) {
-        int result = permissionMapper.delete(id);
+        int result = permissionMapper.deleteById(id);
         if (result > 0) {
             LogUtils.info(PermissionServiceImpl.class, "删除权限成功: {}", id);
             return true;
