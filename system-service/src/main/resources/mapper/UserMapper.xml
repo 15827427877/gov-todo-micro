@@ -33,6 +33,7 @@
     <update id="update" parameterType="com.gov.systemservice.pojo.User">
         UPDATE sys_user
         SET
+            password = #{password},
             real_name = #{realName},
             department_id = #{departmentId},
             phone = #{phone},

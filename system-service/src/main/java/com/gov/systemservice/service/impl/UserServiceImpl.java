@@ -1,5 +1,6 @@
 package com.gov.systemservice.service.impl;
 
+import com.gov.common.Result;
 import com.gov.common.utils.JwtUtils;
 import com.gov.common.utils.LogUtils;
 import com.gov.common.utils.PasswordUtils;
@@ -90,12 +91,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean register(RegisterRequest request) {
-        // 检查用户名是否已存在
-        User existingUser = userMapper.selectByUsername(request.getUsername());
-        if (existingUser != null) {
-            throw new RuntimeException("用户名已存在");
-        }
-
         // 创建新用户
         User user = new User();
         user.setUsername(request.getUsername());
@@ -104,6 +99,7 @@ public class UserServiceImpl implements UserService {
         user.setDepartmentId(request.getDepartmentId());
         user.setPhone(request.getPhone());
         user.setEmail(request.getEmail());
+        user.setAvatar(""); // 默认为空字符串
         user.setStatus(1); // 默认为启用状态
 
         int result = userMapper.insert(user);
@@ -114,32 +110,50 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public User selectByUsername(String username) {
+        // 查找用户
+        User user = userMapper.selectByUsername(username);
+        return user;
+    }
+
     /**
      * 密码重置
+     *
      * @param request 密码重置请求
      * @return 重置结果
      */
     @Override
-    public boolean resetPassword(ResetPasswordRequest request) {
-        // 查找用户
-        User user = userMapper.selectByUsername(request.getUsername());
-        if (user == null) {
-            throw new RuntimeException("用户不存在");
-        }
+    public Result<String> resetPassword(ResetPasswordRequest request) {
+        try {
+            // 查找用户
+            LogUtils.info(UserServiceImpl.class, "开始密码重置，用户名: {}", request.getUsername());
+            User user = userMapper.selectByUsername(request.getUsername());
+            if (user == null) {
+                LogUtils.info(UserServiceImpl.class, "用户不存在: {}", request.getUsername());
+                return Result.error("用户不存在");
+            }
 
-        // 验证旧密码
-        if (!PasswordUtils.matches(request.getOldPassword(), user.getPassword())) {
-            throw new RuntimeException("旧密码错误");
-        }
+            // 验证旧密码
+            if (!PasswordUtils.matches(request.getOldPassword(), user.getPassword())) {
+                LogUtils.info(UserServiceImpl.class, "旧密码错误: {}", request.getUsername());
+                return Result.error("旧密码错误");
+            }
 
-        // 更新密码
-        user.setPassword(PasswordUtils.encrypt(request.getNewPassword()));
-        int result = userMapper.update(user);
-        if (result > 0) {
-            LogUtils.info(UserServiceImpl.class, "用户密码重置成功: {}", request.getUsername());
-            return true;
+            // 更新密码
+            user.setPassword(PasswordUtils.encrypt(request.getNewPassword()));
+            LogUtils.info(UserServiceImpl.class, "更新密码，用户名: {}", request.getUsername());
+            int result = userMapper.update(user);
+            if (result > 0) {
+                LogUtils.info(UserServiceImpl.class, "用户密码重置成功: {}", request.getUsername());
+            } else {
+                LogUtils.info(UserServiceImpl.class, "用户密码重置失败: {}", request.getUsername());
+            }
+            return Result.success("用户密码重置成功！");
+        } catch (Exception e) {
+            LogUtils.error(UserServiceImpl.class, "密码重置异常: {}", e.getMessage());
+            return Result.error("密码重置失败: " + e.getMessage());
         }
-        return false;
     }
 
     /**

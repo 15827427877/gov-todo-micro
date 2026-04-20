@@ -5,6 +5,7 @@ import com.gov.systemservice.dto.LoginRequest;
 import com.gov.systemservice.dto.LoginResponse;
 import com.gov.systemservice.dto.RegisterRequest;
 import com.gov.systemservice.dto.ResetPasswordRequest;
+import com.gov.systemservice.pojo.User;
 import com.gov.systemservice.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,11 @@ public class UserController {
      */
     @PostMapping("/register")
     public Result<Boolean> register(@RequestBody RegisterRequest request) {
+        // 检查用户名是否已存在
+        User existingUser = userService.selectByUsername(request.getUsername());
+        if (existingUser != null) {
+            return Result.error("用户名已存在");
+        }
         boolean result = userService.register(request);
         return Result.success(result);
     }
@@ -54,10 +60,9 @@ public class UserController {
      * @param request 密码重置请求
      * @return 重置结果
      */
-    @PostMapping("/reset-password")
-    public Result<Boolean> resetPassword(@RequestBody ResetPasswordRequest request) {
-        boolean result = userService.resetPassword(request);
-        return Result.success(result);
+    @PostMapping("/resetpd")
+    public Result<String> resetPassword(@RequestBody ResetPasswordRequest request) {
+        return userService.resetPassword(request);
     }
 
     /**
