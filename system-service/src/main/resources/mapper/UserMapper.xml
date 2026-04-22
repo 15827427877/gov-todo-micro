@@ -52,4 +52,12 @@
             update_time = NOW()
         WHERE id = #{id}
     </update>
+
+    <select id="selectAll" resultMap="userMap">
+        SELECT * FROM sys_user
+    </select>
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM sys_user WHERE id = #{id}
+    </delete>
 </mapper>

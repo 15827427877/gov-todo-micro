@@ -44,7 +44,11 @@ public class PermissionUtils {
     public boolean hasPermission(String permissionCode) {
         try {
             // 从SecurityContext中获取用户名
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null || !authentication.isAuthenticated()) {
+                return false;
+            }
+            String username = authentication.getName();
 
             // 测试环境：为了方便测试，让admin用户拥有所有权限
             if ("admin".equals(username)) {
@@ -89,7 +93,11 @@ public class PermissionUtils {
     public boolean isInDepartment(Long departmentId) {
         try {
             // 从SecurityContext中获取用户名
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null || !authentication.isAuthenticated()) {
+                return false;
+            }
+            String username = authentication.getName();
 
             // 获取用户信息
             User user = userMapper.selectByUsername(username);
@@ -113,7 +121,11 @@ public class PermissionUtils {
     public boolean hasRole(String roleCode) {
         try {
             // 从SecurityContext中获取用户名
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication == null || !authentication.isAuthenticated()) {
+                return false;
+            }
+            String username = authentication.getName();
 
             // 获取用户信息
             User user = userMapper.selectByUsername(username);

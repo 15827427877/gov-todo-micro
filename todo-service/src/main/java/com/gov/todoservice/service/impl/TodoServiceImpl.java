@@ -69,4 +69,47 @@ public class TodoServiceImpl implements TodoService {
     public boolean deleteTodos(List<Long> ids) {
         return todoMapper.deleteByIds(ids) > 0;
     }
+
+    @Override
+    @Transactional
+    public TodoItem updateStatus(Long id, boolean completed) {
+        TodoItem existingTodo = todoMapper.selectById(id);
+        if (existingTodo == null) {
+            throw new RuntimeException("Todo not found with id: " + id);
+        }
+        existingTodo.setCompleted(completed);
+        existingTodo.setUpdateTime(java.time.LocalDateTime.now());
+        todoMapper.update(existingTodo);
+        return existingTodo;
+    }
+
+    @Override
+    @Transactional
+    public TodoItem transferTodo(Long id, String assignee) {
+        TodoItem existingTodo = todoMapper.selectById(id);
+        if (existingTodo == null) {
+            throw new RuntimeException("Todo not found with id: " + id);
+        }
+        // 这里需要实现转交待办的逻辑
+        // 暂时只更新更新时间，后续需要实现
+        existingTodo.setUpdateTime(java.time.LocalDateTime.now());
+        todoMapper.update(existingTodo);
+        return existingTodo;
+    }
+
+    @Override
+    public java.util.Map<String, Object> getStatistics() {
+        List<TodoItem> allTodos = todoMapper.selectAll();
+        long total = allTodos.size();
+        long completed = allTodos.stream().filter(todo -> todo.getCompleted() != null && todo.getCompleted()).count();
+        long pending = total - completed;
+        
+        java.util.Map<String, Object> statistics = new java.util.HashMap<>();
+        statistics.put("total", total);
+        statistics.put("completed", completed);
+        statistics.put("pending", pending);
+        statistics.put("completedRate", total > 0 ? (double) completed / total : 0.0);
+        
+        return statistics;
+    }
 }

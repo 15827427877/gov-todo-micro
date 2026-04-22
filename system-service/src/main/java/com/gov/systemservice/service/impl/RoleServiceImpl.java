@@ -2,8 +2,10 @@ package com.gov.systemservice.service.impl;
 
 import com.gov.common.utils.LogUtils;
 import com.gov.systemservice.mapper.RoleMapper;
+import com.gov.systemservice.mapper.RolePermissionMapper;
 import com.gov.systemservice.mapper.UserRoleMapper;
 import com.gov.systemservice.pojo.Role;
+import com.gov.systemservice.pojo.RolePermission;
 import com.gov.systemservice.pojo.UserRole;
 import com.gov.systemservice.service.RoleService;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Resource
     private UserRoleMapper userRoleMapper;
+
+    @Resource
+    private RolePermissionMapper rolePermissionMapper;
 
     @Override
     public List<Role> getAllRoles() {
@@ -81,6 +86,29 @@ public class RoleServiceImpl implements RoleService {
         }
 
         LogUtils.info(RoleServiceImpl.class, "为用户分配角色成功: userId={}, roleIds={}", userId, roleIds);
+        return true;
+    }
+
+    @Override
+    public List<Long> getRolePermissions(Long roleId) {
+        return roleMapper.selectPermissionIdsByRoleId(roleId);
+    }
+
+    @Override
+    @Transactional
+    public boolean assignPermissionsToRole(Long roleId, List<Long> permissionIds) {
+        // 先删除角色原有的权限
+        rolePermissionMapper.deleteByRoleId(roleId);
+
+        // 为角色分配新的权限
+        for (Long permissionId : permissionIds) {
+            RolePermission rolePermission = new RolePermission();
+            rolePermission.setRoleId(roleId);
+            rolePermission.setPermissionId(permissionId);
+            rolePermissionMapper.insert(rolePermission);
+        }
+
+        LogUtils.info(RoleServiceImpl.class, "为角色分配权限成功: roleId={}, permissionIds={}", roleId, permissionIds);
         return true;
     }
 }

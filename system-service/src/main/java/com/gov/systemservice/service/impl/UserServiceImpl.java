@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -186,5 +187,62 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String username) {
         return userMapper.selectByUsername(username);
+    }
+
+    /**
+     * 获取用户列表
+     * @return 用户列表
+     */
+    @Override
+    public List<User> getUsers() {
+        return userMapper.selectAll();
+    }
+
+    /**
+     * 创建用户
+     * @param user 用户信息
+     * @return 创建的用户
+     */
+    @Override
+    public User createUser(User user) {
+        // 加密密码
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            user.setPassword(PasswordUtils.encrypt(user.getPassword()));
+        }
+        // 设置默认值
+        if (user.getStatus() == null) {
+            user.setStatus(1);
+        }
+        if (user.getAvatar() == null) {
+            user.setAvatar("");
+        }
+        userMapper.insert(user);
+        return user;
+    }
+
+    /**
+     * 更新用户
+     * @param user 用户信息
+     * @return 更新后的用户
+     */
+    @Override
+    public User updateUser(User user) {
+        // 如果密码不为空，则加密
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            user.setPassword(PasswordUtils.encrypt(user.getPassword()));
+        }
+        userMapper.update(user);
+        return userMapper.selectById(user.getId());
+    }
+
+    /**
+     * 删除用户
+     * @param id 用户ID
+     * @return 删除结果
+     */
+    @Override
+    public boolean deleteUser(Long id) {
+        int result = userMapper.deleteById(id);
+        return result > 0;
     }
 }

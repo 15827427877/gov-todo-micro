@@ -11,4 +11,6 @@ public interface UserMapper {
     int insert(User user);
     int update(User user);
     int updateLastLoginInfo(@Param("id") Long id, @Param("lastLoginTime") java.util.Date lastLoginTime, @Param("loginIp") String loginIp);
+    java.util.List<User> selectAll();
+    int deleteById(@Param("id") Long id);
 }

@@ -9,16 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/todo")
+@RequestMapping("/api/todo")
 public class TodoController {
 
     @Autowired
     private TodoService todoService;
 
     @GetMapping("/list")
-    public Result<List<TodoItem>> list() {
+    public Result<?> list(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "size", defaultValue = "10") Integer size,
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            @RequestParam(value = "sortField", defaultValue = "") String sortField,
+            @RequestParam(value = "sortOrder", defaultValue = "") String sortOrder) {
+        // 这里需要实现分页、排序、搜索逻辑
+        // 暂时返回模拟数据，后续需要实现
         List<TodoItem> todos = todoService.getAllTodos();
-        return Result.success(todos);
+        return Result.success(java.util.Map.of(
+                "list", todos,
+                "total", todos.size()
+        ));
     }
 
     @GetMapping("/{id}")
@@ -59,5 +69,34 @@ public class TodoController {
     public Result<Boolean> deleteBatch(@RequestBody List<Long> ids) {
         boolean deleted = todoService.deleteTodos(ids);
         return Result.success(deleted);
+    }
+
+    /**
+     * 修改状态
+     */
+    @PatchMapping("/{id}/status")
+    public Result<TodoItem> updateStatus(@PathVariable Long id, @RequestBody java.util.Map<String, String> status) {
+        boolean completed = "已完成".equals(status.get("status"));
+        TodoItem updatedTodo = todoService.updateStatus(id, completed);
+        return Result.success(updatedTodo);
+    }
+
+    /**
+     * 转交待办
+     */
+    @PatchMapping("/{id}/transfer")
+    public Result<TodoItem> transferTodo(@PathVariable Long id, @RequestBody java.util.Map<String, String> assignee) {
+        String newAssignee = assignee.get("assignee");
+        TodoItem updatedTodo = todoService.transferTodo(id, newAssignee);
+        return Result.success(updatedTodo);
+    }
+
+    /**
+     * 待办统计
+     */
+    @GetMapping("/statistics")
+    public Result<java.util.Map<String, Object>> statistics(@RequestParam(value = "keyword", defaultValue = "") String keyword) {
+        java.util.Map<String, Object> statistics = todoService.getStatistics();
+        return Result.success(statistics);
     }
 }

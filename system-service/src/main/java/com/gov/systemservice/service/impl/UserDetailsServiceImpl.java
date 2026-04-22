@@ -1,5 +1,6 @@
 package com.gov.systemservice.service.impl;
 
+import com.gov.common.utils.PasswordUtils;
 import com.gov.systemservice.mapper.UserMapper;
 import com.gov.systemservice.pojo.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +28,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // 从数据库中获取用户信息
         User user = userMapper.selectByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("用户不存在");
+            // 如果用户不存在，创建一个默认的admin用户
+            if ("admin".equals(username)) {
+                user = new User();
+                user.setUsername("admin");
+                user.setPassword(PasswordUtils.encrypt("123456"));
+                user.setRealName("管理员");
+                user.setDepartmentId(1L);
+                user.setPhone("");
+                user.setEmail("");
+                user.setAvatar("");
+                user.setStatus(1);
+                userMapper.insert(user);
+            } else {
+                throw new UsernameNotFoundException("用户不存在");
+            }
         }
 
         // 构建UserDetails对象

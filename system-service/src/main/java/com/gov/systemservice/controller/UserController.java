@@ -8,6 +8,7 @@ import com.gov.systemservice.dto.RegisterRequest;
 import com.gov.systemservice.dto.ResetPasswordRequest;
 import com.gov.systemservice.pojo.User;
 import com.gov.systemservice.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @since 2026-04-19
  */
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/system/user")
 public class UserController {
 
     @Resource
@@ -75,6 +76,18 @@ public class UserController {
     @RequiresPermission("user:read")
     public Result<User> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
+        return Result.success(user);
+    }
+
+    /**
+     * 获取当前用户信息
+     * @return 当前用户信息
+     */
+    @GetMapping("/info")
+    @RequiresPermission("user:read")
+    public Result<User> getCurrentUserInfo() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUsername(username);
         return Result.success(user);
     }
 

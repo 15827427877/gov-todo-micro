@@ -54,4 +54,11 @@ public interface RoleMapper {
      * @return 角色列表
      */
     List<Role> selectByUserId(@Param("userId") Long userId);
+
+    /**
+     * 根据角色ID查询权限ID列表
+     * @param roleId 角色ID
+     * @return 权限ID列表
+     */
+    List<Long> selectPermissionIdsByRoleId(@Param("roleId") Long roleId);
 }

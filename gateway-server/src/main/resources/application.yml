@@ -9,7 +9,56 @@ spring:
         server-addr: localhost:8848
         enabled: false
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
+        - id: api-todo-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/todo/**
+          filters:
+            - RewritePath=/api/todo/(?<segment>.*), /api/todo/${segment}
+        - id: api-roles-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/roles/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-permissions-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/permissions/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-users-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-departments-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/departments/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-modules-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/modules/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-system-user-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/system/**
+          filters:
+            - RewritePath=/api/system/(?<segment>.*), /api/${segment}
         - id: todo-service
           uri: http://localhost:8090
           predicates:

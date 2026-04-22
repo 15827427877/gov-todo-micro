@@ -12,4 +12,6 @@ public interface RoleService {
     boolean deleteRole(Long id);
     List<Role> getRolesByUserId(Long userId);
     boolean assignRolesToUser(Long userId, List<Long> roleIds);
+    List<Long> getRolePermissions(Long roleId);
+    boolean assignPermissionsToRole(Long roleId, List<Long> permissionIds);
 }
