@@ -97,18 +97,25 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @Transactional
     public boolean assignPermissionsToRole(Long roleId, List<Long> permissionIds) {
-        // 先删除角色原有的权限
-        rolePermissionMapper.deleteByRoleId(roleId);
+        try {
+            // 先删除角色原有的权限
+            rolePermissionMapper.deleteByRoleId(roleId);
 
-        // 为角色分配新的权限
-        for (Long permissionId : permissionIds) {
-            RolePermission rolePermission = new RolePermission();
-            rolePermission.setRoleId(roleId);
-            rolePermission.setPermissionId(permissionId);
-            rolePermissionMapper.insert(rolePermission);
+            // 为角色分配新的权限
+            if (permissionIds != null && !permissionIds.isEmpty()) {
+                for (Long permissionId : permissionIds) {
+                    RolePermission rolePermission = new RolePermission();
+                    rolePermission.setRoleId(roleId);
+                    rolePermission.setPermissionId(permissionId);
+                    rolePermissionMapper.insert(rolePermission);
+                }
+            }
+
+            LogUtils.info(RoleServiceImpl.class, "为角色分配权限成功: roleId={}, permissionIds={}", roleId, permissionIds);
+            return true;
+        } catch (Exception e) {
+            LogUtils.error(RoleServiceImpl.class, "为角色分配权限失败: roleId={}, error={}", roleId, e.getMessage());
+            throw new RuntimeException("权限分配失败: " + e.getMessage());
         }
-
-        LogUtils.info(RoleServiceImpl.class, "为角色分配权限成功: roleId={}, permissionIds={}", roleId, permissionIds);
-        return true;
     }
 }

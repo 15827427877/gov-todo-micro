@@ -20,4 +20,6 @@ public interface UserService {
     User createUser(User user);
     User updateUser(User user);
     boolean deleteUser(Long id);
+    List<Long> getUserRoles(Long userId);
+    boolean assignRolesToUser(Long userId, List<Long> roleIds);
 }

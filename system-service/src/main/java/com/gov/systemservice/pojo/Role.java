@@ -1,6 +1,7 @@
 package com.gov.systemservice.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 public class Role {
     private Long id;
+    @JsonProperty("roleName")
     private String roleName;
     private String roleCode;
     private String description;

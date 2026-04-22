@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface PermissionService {
     List<Permission> getAllPermissions();
+    List<Permission> getPermissionsTree();
     Permission getPermissionById(Long id);
     boolean createPermission(Permission permission);
     boolean updatePermission(Permission permission);

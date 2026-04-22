@@ -10,6 +10,8 @@ import com.gov.systemservice.dto.RegisterRequest;
 import com.gov.systemservice.dto.ResetPasswordRequest;
 import com.gov.systemservice.mapper.RoleMapper;
 import com.gov.systemservice.mapper.UserMapper;
+import com.gov.systemservice.mapper.UserRoleMapper;
+import com.gov.systemservice.pojo.UserRole;
 import com.gov.systemservice.pojo.Role;
 import com.gov.systemservice.pojo.User;
 import com.gov.systemservice.service.UserService;
@@ -36,6 +38,9 @@ public class UserServiceImpl implements UserService {
     
     @Resource
     private RoleMapper roleMapper;
+    
+    @Resource
+    private UserRoleMapper userRoleMapper;
 
     /**
      * 用户登录
@@ -252,5 +257,53 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUser(Long id) {
         int result = userMapper.deleteById(id);
         return result > 0;
+    }
+
+    /**
+     * 获取用户角色列表
+     * @param userId 用户ID
+     * @return 角色ID列表
+     */
+    @Override
+    public List<Long> getUserRoles(Long userId) {
+        try {
+            List<Long> roleIds = userRoleMapper.selectRoleIdsByUserId(userId);
+            LogUtils.info(UserServiceImpl.class, "获取用户角色列表成功: userId={}, roleIds={}", userId, roleIds);
+            return roleIds;
+        } catch (Exception e) {
+            LogUtils.error(UserServiceImpl.class, "获取用户角色列表失败: userId={}, error={}", userId, e.getMessage());
+            throw new RuntimeException("获取用户角色列表失败: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 为用户分配角色
+     * @param userId 用户ID
+     * @param roleIds 角色ID列表
+     * @return 分配结果
+     */
+    @Override
+    @org.springframework.transaction.annotation.Transactional
+    public boolean assignRolesToUser(Long userId, List<Long> roleIds) {
+        try {
+            // 先删除用户原有的角色
+            userRoleMapper.deleteByUserId(userId);
+
+            // 为用户分配新的角色
+            if (roleIds != null && !roleIds.isEmpty()) {
+                for (Long roleId : roleIds) {
+                    UserRole userRole = new UserRole();
+                    userRole.setUserId(userId);
+                    userRole.setRoleId(roleId);
+                    userRoleMapper.insert(userRole);
+                }
+            }
+
+            LogUtils.info(UserServiceImpl.class, "为用户分配角色成功: userId={}, roleIds={}", userId, roleIds);
+            return true;
+        } catch (Exception e) {
+            LogUtils.error(UserServiceImpl.class, "为用户分配角色失败: userId={}, error={}", userId, e.getMessage());
+            throw new RuntimeException("角色分配失败: " + e.getMessage());
+        }
     }
 }

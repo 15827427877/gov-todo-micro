@@ -94,7 +94,7 @@ public class PermissionController {
      * @return 分配结果
      */
     @PostMapping("/assign")
-    public Result<Boolean> assignPermissionsToRole(@RequestParam Long roleId, @RequestBody List<Long> permissionIds) {
+    public Result<Boolean> assignPermissionsToRole(@RequestParam Long roleId, @RequestParam List<Long> permissionIds) {
         boolean result = permissionService.assignPermissionsToRole(roleId, permissionIds);
         return Result.success(result);
     }

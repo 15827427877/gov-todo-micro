@@ -31,7 +31,30 @@ public class PermissionsController {
     @RequiresPermission("permission:list")
     public Result<List<Permission>> getPermissions() {
         List<Permission> permissions = permissionService.getAllPermissions();
-        return Result.success(permissions);
+        return Result.success(permissions, "操作成功");
+    }
+
+    /**
+     * 获取权限树形结构
+     * @return 权限树形结构
+     */
+    @GetMapping("/tree")
+    @RequiresPermission("permission:list")
+    public Result<List<Permission>> getPermissionsTree() {
+        List<Permission> permissionsTree = permissionService.getPermissionsTree();
+        return Result.success(permissionsTree, "操作成功");
+    }
+
+    /**
+     * 获取权限详情
+     * @param id 权限ID
+     * @return 权限详情
+     */
+    @GetMapping("/{id}")
+    @RequiresPermission("permission:read")
+    public Result<Permission> getPermissionById(@PathVariable Long id) {
+        Permission permission = permissionService.getPermissionById(id);
+        return Result.success(permission, "操作成功");
     }
 
     /**
@@ -44,7 +67,7 @@ public class PermissionsController {
     public Result<Permission> createPermission(@RequestBody Permission permission) {
         boolean created = permissionService.createPermission(permission);
         if (created) {
-            return Result.success(permission);
+            return Result.success(permission, "新增成功");
         }
         return Result.error("创建权限失败");
     }
@@ -61,7 +84,7 @@ public class PermissionsController {
         permission.setId(id);
         boolean updated = permissionService.updatePermission(permission);
         if (updated) {
-            return Result.success(permission);
+            return Result.success(permission, "更新成功");
         }
         return Result.error("更新权限失败");
     }
@@ -75,7 +98,7 @@ public class PermissionsController {
     @RequiresPermission("permission:delete")
     public Result<Boolean> deletePermission(@PathVariable Long id) {
         boolean deleted = permissionService.deletePermission(id);
-        return Result.success(deleted);
+        return Result.success(deleted, "删除成功");
     }
 
     /**

@@ -13,25 +13,27 @@
     </resultMap>
 
     <select id="selectAll" resultMap="permissionMap">
-        SELECT * FROM sys_permission
+        SELECT id, parent_id, permission_name, permission_code, url, method, description, status, create_time, update_time FROM sys_permission
     </select>
 
     <select id="selectById" parameterType="long" resultMap="permissionMap">
-        SELECT * FROM sys_permission WHERE id = #{id}
+        SELECT id, parent_id, permission_name, permission_code, url, method, description, status, create_time, update_time FROM sys_permission WHERE id = #{id}
     </select>
 
     <insert id="insert" parameterType="com.gov.systemservice.pojo.Permission" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO sys_permission (permission_name, permission_code, url, method, status, create_time, update_time)
-        VALUES (#{permissionName}, #{permissionCode}, #{url}, #{method}, #{status}, NOW(), NOW())
+        INSERT INTO sys_permission (parent_id, permission_name, permission_code, url, method, description, status, create_time, update_time)
+        VALUES (#{parentId}, #{permissionName}, #{permissionCode}, #{url}, #{method}, #{description}, #{status}, NOW(), NOW())
     </insert>
 
     <update id="update" parameterType="com.gov.systemservice.pojo.Permission">
         UPDATE sys_permission
         SET
+            parent_id = #{parentId},
             permission_name = #{permissionName},
             permission_code = #{permissionCode},
             url = #{url},
             method = #{method},
+            description = #{description},
             status = #{status},
             update_time = NOW()
         WHERE id = #{id}
@@ -42,7 +44,7 @@
     </delete>
 
     <select id="selectByRoleId" parameterType="long" resultMap="permissionMap">
-        SELECT p.* FROM sys_permission p
+        SELECT p.id, p.parent_id, p.permission_name, p.permission_code, p.url, p.method, p.description, p.status, p.create_time, p.update_time FROM sys_permission p
         JOIN sys_role_permission rp ON p.id = rp.permission_id
         WHERE rp.role_id = #{roleId}
     </select>

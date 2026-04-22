@@ -31,7 +31,19 @@ public class RolesController {
     @RequiresPermission("role:list")
     public Result<List<Role>> getRoles() {
         List<Role> roles = roleService.getAllRoles();
-        return Result.success(roles);
+        return Result.success(roles, "操作成功");
+    }
+
+    /**
+     * 获取角色详情
+     * @param id 角色ID
+     * @return 角色详情
+     */
+    @GetMapping("/{id}")
+    @RequiresPermission("role:read")
+    public Result<Role> getRoleById(@PathVariable Long id) {
+        Role role = roleService.getRoleById(id);
+        return Result.success(role, "操作成功");
     }
 
     /**
@@ -44,7 +56,7 @@ public class RolesController {
     public Result<Role> createRole(@RequestBody Role role) {
         boolean created = roleService.createRole(role);
         if (created) {
-            return Result.success(role);
+            return Result.success(role, "新增成功");
         }
         return Result.error("创建角色失败");
     }
@@ -61,7 +73,7 @@ public class RolesController {
         role.setId(id);
         boolean updated = roleService.updateRole(role);
         if (updated) {
-            return Result.success(role);
+            return Result.success(role, "更新成功");
         }
         return Result.error("更新角色失败");
     }
@@ -75,7 +87,7 @@ public class RolesController {
     @RequiresPermission("role:delete")
     public Result<Boolean> deleteRole(@PathVariable Long id) {
         boolean deleted = roleService.deleteRole(id);
-        return Result.success(deleted);
+        return Result.success(deleted, "删除成功");
     }
 
     /**
@@ -87,19 +99,34 @@ public class RolesController {
     @RequiresPermission("role:read")
     public Result<List<Long>> getRolePermissions(@PathVariable Long id) {
         List<Long> permissionIds = roleService.getRolePermissions(id);
-        return Result.success(permissionIds);
+        return Result.success(permissionIds, "操作成功");
     }
 
     /**
      * 分配权限
      * @param id 角色ID
-     * @param permissionIds 权限ID列表
+     * @param request 包含权限ID列表的请求对象
      * @return 分配结果
      */
     @PostMapping("/{id}/permissions")
     @RequiresPermission("role:update")
-    public Result<Boolean> assignPermissions(@PathVariable Long id, @RequestBody List<Long> permissionIds) {
-        boolean result = roleService.assignPermissionsToRole(id, permissionIds);
-        return Result.success(result);
+    public Result<Boolean> assignPermissions(@PathVariable Long id, @RequestBody PermissionIdsRequest request) {
+        boolean result = roleService.assignPermissionsToRole(id, request.getPermissionIds());
+        return Result.success(result, "权限分配成功");
+    }
+    
+    /**
+     * 权限ID列表请求对象
+     */
+    static class PermissionIdsRequest {
+        private List<Long> permissionIds;
+        
+        public List<Long> getPermissionIds() {
+            return permissionIds;
+        }
+        
+        public void setPermissionIds(List<Long> permissionIds) {
+            this.permissionIds = permissionIds;
+        }
     }
 }

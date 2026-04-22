@@ -83,4 +83,29 @@ public class UsersController {
         boolean deleted = userService.deleteUser(id);
         return Result.success(deleted);
     }
+
+    /**
+     * 获取用户角色列表
+     * @param id 用户ID
+     * @return 角色ID列表
+     */
+    @GetMapping("/{id}/roles")
+    @RequiresPermission("user:read")
+    public Result<List<Long>> getUserRoles(@PathVariable Long id) {
+        List<Long> roleIds = userService.getUserRoles(id);
+        return Result.success(roleIds);
+    }
+
+    /**
+     * 为用户分配角色
+     * @param id 用户ID
+     * @param roleIds 角色ID列表
+     * @return 分配结果
+     */
+    @PostMapping("/{id}/roles")
+    @RequiresPermission("user:update")
+    public Result<Boolean> assignRolesToUser(@PathVariable Long id, @RequestBody List<Long> roleIds) {
+        boolean result = userService.assignRolesToUser(id, roleIds);
+        return Result.success(result, "角色分配成功");
+    }
 }

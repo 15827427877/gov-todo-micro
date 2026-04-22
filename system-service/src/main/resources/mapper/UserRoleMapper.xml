@@ -7,8 +7,12 @@
         <result column="role_id" property="roleId"/>
     </resultMap>
 
-    <select id="selectByUserId" parameterType="long" resultMap="userRoleMap">
-        SELECT * FROM sys_user_role WHERE user_id = #{userId}
+    <select id="selectRoleIdsByUserId" parameterType="long" resultType="long">
+        SELECT role_id FROM sys_user_role WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectUserIdsByRoleId" parameterType="long" resultType="long">
+        SELECT user_id FROM sys_user_role WHERE role_id = #{roleId}
     </select>
 
     <insert id="insert" parameterType="com.gov.systemservice.pojo.UserRole" useGeneratedKeys="true" keyProperty="id">
@@ -16,7 +20,11 @@
         VALUES (#{userId}, #{roleId})
     </insert>
 
-    <delete id="deleteByUserId" parameterType="long">
+    <delete id="deleteByUserId">
         DELETE FROM sys_user_role WHERE user_id = #{userId}
+    </delete>
+
+    <delete id="deleteByUserIdAndRoleId">
+        DELETE FROM sys_user_role WHERE user_id = #{userId} AND role_id = #{roleId}
     </delete>
 </mapper>
