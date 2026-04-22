@@ -53,6 +53,12 @@ spring:
             - Path=/api/modules/**
           filters:
             - RewritePath=/api/(?<segment>.*), /api/${segment}
+        - id: api-login-service
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/login
+          filters:
+            - RewritePath=/api/login, /api/system/user/login
         - id: api-system-user-service
           uri: http://localhost:8091
           predicates:

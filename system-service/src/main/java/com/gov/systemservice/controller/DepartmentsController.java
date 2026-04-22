@@ -44,7 +44,7 @@ public class DepartmentsController {
     public Result<Department> createDepartment(@RequestBody Department department) {
         boolean created = departmentService.createDepartment(department);
         if (created) {
-            return Result.success(department);
+            return Result.success(department, "新增成功");
         }
         return Result.error("创建部门失败");
     }
@@ -61,7 +61,7 @@ public class DepartmentsController {
         department.setId(id);
         boolean updated = departmentService.updateDepartment(department);
         if (updated) {
-            return Result.success(department);
+            return Result.success(department, "更新成功");
         }
         return Result.error("更新部门失败");
     }
@@ -73,8 +73,8 @@ public class DepartmentsController {
      */
     @DeleteMapping("/{id}")
     @RequiresPermission("department:delete")
-    public Result<Boolean> deleteDepartment(@PathVariable Long id) {
-        boolean deleted = departmentService.deleteDepartment(id);
-        return Result.success(deleted);
+    public Result<Void> deleteDepartment(@PathVariable Long id) {
+        departmentService.deleteDepartment(id);
+        return Result.success(null, "删除成功");
     }
 }

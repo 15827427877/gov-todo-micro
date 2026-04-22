@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         // 设置登录请求路径
-        setFilterProcessesUrl("/api/user/login");
+        setFilterProcessesUrl("/api/system/user/login");
     }
 
     @Override

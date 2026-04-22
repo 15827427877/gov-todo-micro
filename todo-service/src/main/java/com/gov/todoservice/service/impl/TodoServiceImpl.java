@@ -46,6 +46,15 @@ public class TodoServiceImpl implements TodoService {
         if (todoItem.getTitle() != null) {
             existingTodo.setTitle(todoItem.getTitle());
         }
+        if (todoItem.getAssignee() != null) {
+            existingTodo.setAssignee(todoItem.getAssignee());
+        }
+        if (todoItem.getStatus() != null) {
+            existingTodo.setStatus(todoItem.getStatus());
+        }
+        if (todoItem.getDeadline() != null) {
+            existingTodo.setDeadline(todoItem.getDeadline());
+        }
         if (todoItem.getDescription() != null) {
             existingTodo.setDescription(todoItem.getDescription());
         }
@@ -72,12 +81,14 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     @Transactional
-    public TodoItem updateStatus(Long id, boolean completed) {
+    public TodoItem updateStatus(Long id, String status) {
         TodoItem existingTodo = todoMapper.selectById(id);
         if (existingTodo == null) {
             throw new RuntimeException("Todo not found with id: " + id);
         }
-        existingTodo.setCompleted(completed);
+        existingTodo.setStatus(status);
+        // 根据 status 字段更新 completed 字段
+        existingTodo.setCompleted("已完成".equals(status));
         existingTodo.setUpdateTime(java.time.LocalDateTime.now());
         todoMapper.update(existingTodo);
         return existingTodo;
@@ -90,8 +101,7 @@ public class TodoServiceImpl implements TodoService {
         if (existingTodo == null) {
             throw new RuntimeException("Todo not found with id: " + id);
         }
-        // 这里需要实现转交待办的逻辑
-        // 暂时只更新更新时间，后续需要实现
+        existingTodo.setAssignee(assignee);
         existingTodo.setUpdateTime(java.time.LocalDateTime.now());
         todoMapper.update(existingTodo);
         return existingTodo;

@@ -49,7 +49,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .roles() // 这里可以根据实际情况添加角色
+                .roles("ADMIN") // 为admin用户添加ADMIN角色
                 .build();
     }
 }

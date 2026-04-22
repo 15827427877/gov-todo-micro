@@ -19,7 +19,7 @@ public interface TodoService {
 
     boolean deleteTodos(List<Long> ids);
 
-    TodoItem updateStatus(Long id, boolean completed);
+    TodoItem updateStatus(Long id, String status);
 
     TodoItem transferTodo(Long id, String assignee);
 

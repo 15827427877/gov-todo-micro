@@ -28,7 +28,8 @@ CREATE TABLE sys_user (
 DROP TABLE IF EXISTS sys_department;
 CREATE TABLE sys_department (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '部门ID',
-    department_name VARCHAR(100) NOT NULL COMMENT '部门名称',
+    name VARCHAR(100) NOT NULL COMMENT '部门名称',
+    leader VARCHAR(50) COMMENT '负责人',
     parent_id BIGINT DEFAULT 0 COMMENT '父部门ID',
     level INT NOT NULL DEFAULT 1 COMMENT '部门级别',
     sort INT NOT NULL DEFAULT 0 COMMENT '排序',
@@ -44,11 +45,14 @@ DROP TABLE IF EXISTS todo_item;
 CREATE TABLE todo_item (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '待办ID',
     title VARCHAR(255) NOT NULL COMMENT '待办标题',
+    assignee VARCHAR(50) COMMENT '负责人',
+    status VARCHAR(20) NOT NULL DEFAULT '待处理' COMMENT '状态：待处理、处理中、已完成',
+    deadline VARCHAR(50) COMMENT '截止日期',
     description TEXT COMMENT '待办描述',
+    completed BOOLEAN NOT NULL DEFAULT FALSE COMMENT '是否完成',
     user_id BIGINT COMMENT '创建用户ID',
     department_id BIGINT COMMENT '所属部门ID',
     priority TINYINT NOT NULL DEFAULT 0 COMMENT '优先级：0-低，1-中，2-高',
-    status TINYINT NOT NULL DEFAULT 0 COMMENT '状态：0-待办，1-进行中，2-已完成，3-已取消',
     start_time DATETIME COMMENT '开始时间',
     end_time DATETIME COMMENT '结束时间',
     completed_time DATETIME COMMENT '完成时间',
@@ -100,11 +104,11 @@ CREATE TABLE sys_dict (
 
 -- 初始化数据
 -- 部门数据
-INSERT INTO sys_department (department_name, parent_id, level, sort, status) VALUES
-('总部门', 0, 1, 1, 1),
-('技术部', 1, 2, 2, 1),
-('行政部', 1, 2, 3, 1),
-('财务部', 1, 2, 4, 1);
+INSERT INTO sys_department (name, leader, parent_id, level, sort, status) VALUES
+('总部门', '张三', 0, 1, 1, 1),
+('技术部', '李四', 1, 2, 2, 1),
+('行政部', '王五', 1, 2, 3, 1),
+('财务部', '赵六', 1, 2, 4, 1);
 
 -- 字典数据
 INSERT INTO sys_dict (dict_type, dict_code, dict_name, dict_value, sort, status) VALUES
@@ -123,8 +127,8 @@ INSERT INTO sys_user (username, password, real_name, department_id, phone, email
 ('user2', '$2a$10$e8tF9xQJ8kQzY7g5q7Z52e7Q7e7Q7e7Q7e7Q7e7Q7e7Q7e7Q7e7', '用户2', 3, '13800138002', 'user2@example.com', 1);
 
 -- 待办数据
-INSERT INTO todo_item (title, description, user_id, department_id, priority, status, start_time, end_time) VALUES
-('学习Spring Cloud', '学习微服务架构和Spring Cloud组件', 2, 2, 1, 0, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY)),
-('完成项目文档', '编写项目需求文档和技术文档', 2, 2, 2, 1, NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY)),
-('参加部门会议', '参加每周部门例会', 3, 3, 0, 0, NOW(), NOW()),
-('提交财务报表', '提交月度财务报表', 3, 4, 2, 0, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY));
+INSERT INTO todo_item (title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time) VALUES
+('学习Spring Cloud', '用户1', '待处理', DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 7 DAY), '%Y-%m-%d'), '学习微服务架构和Spring Cloud组件', FALSE, 2, 2, 1, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY)),
+('完成项目文档', '用户1', '处理中', DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 3 DAY), '%Y-%m-%d'), '编写项目需求文档和技术文档', FALSE, 2, 2, 2, NOW(), DATE_ADD(NOW(), INTERVAL 3 DAY)),
+('参加部门会议', '用户2', '待处理', DATE_FORMAT(NOW(), '%Y-%m-%d'), '参加每周部门例会', FALSE, 3, 3, 0, NOW(), NOW()),
+('提交财务报表', '用户2', '待处理', DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 1 DAY), '%Y-%m-%d'), '提交月度财务报表', FALSE, 3, 4, 2, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY));

@@ -48,6 +48,21 @@ public class Result<T> implements Serializable {
     }
 
     /**
+     * 成功响应（带数据和消息）
+     * @param data 响应数据
+     * @param msg 响应消息
+     * @param <T> 数据类型
+     * @return 成功响应结果
+     */
+    public static <T> Result<T> success(T data, String msg) {
+        Result<T> r = new Result<>();
+        r.setCode(200);
+        r.setMsg(msg);
+        r.setData(data);
+        return r;
+    }
+
+    /**
      * 错误响应
      * @param msg 错误消息
      * @param <T> 数据类型

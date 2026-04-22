@@ -81,17 +81,12 @@ public class UserServiceImpl implements UserService {
         // 构建响应
         LoginResponse response = new LoginResponse();
         response.setToken(token);
-
-        LoginResponse.UserInfo userInfo = new LoginResponse.UserInfo();
-        userInfo.setId(user.getId());
-        userInfo.setUsername(user.getUsername());
-        userInfo.setRealName(user.getRealName());
-        userInfo.setDepartmentId(user.getDepartmentId());
-        userInfo.setPhone(user.getPhone());
-        userInfo.setEmail(user.getEmail());
-        userInfo.setStatus(user.getStatus());
-
-        response.setUserInfo(userInfo);
+        response.setName(user.getRealName());
+        response.setUserId(user.getId().toString());
+        // 添加角色信息，默认添加ADMIN角色
+        java.util.List<String> roles = new java.util.ArrayList<>();
+        roles.add("ADMIN");
+        response.setRoles(roles);
 
         LogUtils.info(UserServiceImpl.class, "用户登录成功: {}", user.getUsername());
         return response;

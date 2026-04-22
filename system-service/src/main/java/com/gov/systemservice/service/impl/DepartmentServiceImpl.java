@@ -41,7 +41,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         int result = departmentMapper.insert(department);
         if (result > 0) {
-            LogUtils.info(DepartmentServiceImpl.class, "创建部门成功: {}", department.getDepartmentName());
+            LogUtils.info(DepartmentServiceImpl.class, "创建部门成功: {}", department.getName());
             return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         int result = departmentMapper.update(department);
         if (result > 0) {
-            LogUtils.info(DepartmentServiceImpl.class, "更新部门成功: {}", department.getDepartmentName());
+            LogUtils.info(DepartmentServiceImpl.class, "更新部门成功: {}", department.getName());
             return true;
         }
         return false;

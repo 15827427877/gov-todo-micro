@@ -6,6 +6,9 @@
     <resultMap id="BaseResultMap" type="com.gov.todoservice.pojo.TodoItem">
         <id column="id" property="id"/>
         <result column="title" property="title"/>
+        <result column="assignee" property="assignee"/>
+        <result column="status" property="status"/>
+        <result column="deadline" property="deadline"/>
         <result column="description" property="description"/>
         <result column="completed" property="completed"/>
         <result column="create_time" property="createTime"/>
@@ -13,27 +16,30 @@
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT id, title, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
         FROM todo_item
         ORDER BY create_time DESC
     </select>
 
     <select id="selectById" resultMap="BaseResultMap">
-        SELECT id, title, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
         FROM todo_item
         WHERE id = #{id}
     </select>
 
     <insert id="insert" parameterType="com.gov.todoservice.pojo.TodoItem"
             useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO todo_item (title, description, completed, create_time, update_time)
-        VALUES (#{title}, #{description}, #{completed}, #{createTime}, #{updateTime})
+        INSERT INTO todo_item (title, assignee, status, deadline, description, completed, create_time, update_time)
+        VALUES (#{title}, #{assignee}, #{status}, #{deadline}, #{description}, #{completed}, #{createTime}, #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.gov.todoservice.pojo.TodoItem">
         UPDATE todo_item
         <set>
             <if test="title != null">title = #{title},</if>
+            <if test="assignee != null">assignee = #{assignee},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="deadline != null">deadline = #{deadline},</if>
             <if test="description != null">description = #{description},</if>
             <if test="completed != null">completed = #{completed},</if>
             update_time = #{updateTime}
