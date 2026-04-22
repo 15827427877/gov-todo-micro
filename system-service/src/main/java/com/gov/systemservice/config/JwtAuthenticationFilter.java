@@ -36,8 +36,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
-        // 设置登录请求路径
-        setFilterProcessesUrl("/api/system/user/login");
+        // 禁用默认的登录请求路径处理，由UserController处理登录请求
+        setFilterProcessesUrl("/api/login-disabled");
     }
 
     @Override

@@ -8,7 +8,9 @@ import com.gov.systemservice.dto.LoginRequest;
 import com.gov.systemservice.dto.LoginResponse;
 import com.gov.systemservice.dto.RegisterRequest;
 import com.gov.systemservice.dto.ResetPasswordRequest;
+import com.gov.systemservice.mapper.RoleMapper;
 import com.gov.systemservice.mapper.UserMapper;
+import com.gov.systemservice.pojo.Role;
 import com.gov.systemservice.pojo.User;
 import com.gov.systemservice.service.UserService;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+    
+    @Resource
+    private RoleMapper roleMapper;
 
     /**
      * 用户登录
@@ -83,9 +88,17 @@ public class UserServiceImpl implements UserService {
         response.setToken(token);
         response.setName(user.getRealName());
         response.setUserId(user.getId().toString());
-        // 添加角色信息，默认添加ADMIN角色
+        // 从数据库获取用户角色信息
+        List<Role> userRoles = roleMapper.selectByUserId(user.getId());
         java.util.List<String> roles = new java.util.ArrayList<>();
-        roles.add("ADMIN");
+        if (userRoles != null && !userRoles.isEmpty()) {
+            for (Role role : userRoles) {
+                roles.add(role.getId().toString());
+            }
+        } else {
+            // 如果用户没有角色，默认添加ADMIN角色
+            roles.add("2");
+        }
         response.setRoles(roles);
 
         LogUtils.info(UserServiceImpl.class, "用户登录成功: {}", user.getUsername());

@@ -38,7 +38,7 @@ public class UserController {
     public Result<LoginResponse> login(@RequestBody LoginRequest request, HttpServletRequest httpRequest) {
         String ip = getClientIp(httpRequest);
         LoginResponse response = userService.login(request, ip);
-        return Result.success(response);
+        return Result.success(response, "登录成功");
     }
 
     /**
