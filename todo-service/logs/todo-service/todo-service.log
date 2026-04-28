@@ -1,0 +1,132 @@
+2026-04-28 18:31:17.246 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 18:31:17.300 [main] INFO  c.g.t.TodoServiceApplication - Starting TodoServiceApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 23032 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service)
+2026-04-28 18:31:17.301 [main] DEBUG c.g.t.TodoServiceApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 18:31:17.301 [main] INFO  c.g.t.TodoServiceApplication - The following 1 profile is active: "dev"
+2026-04-28 18:31:17.673 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 18:31:17.674 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 18:31:17.684 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 18:31:17.815 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=97a2c1fa-9202-3e39-8452-7566a70b1d69
+2026-04-28 18:31:18.162 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2026-04-28 18:31:18.167 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:18.168 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 18:31:18.168 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 18:31:18.256 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 18:31:18.256 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 930 ms
+2026-04-28 18:31:18.495 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 7aa3f1b6-e9b5-4a0b-8b56-a9b0396d3bc4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-28 18:31:18.548 [main] INFO  c.a.c.s.SentinelWebMvcConfigurer - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+2026-04-28 18:31:18.636 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6a543e09, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d0f548a, org.springframework.security.web.context.SecurityContextPersistenceFilter@3fd33f48, org.springframework.security.web.header.HeaderWriterFilter@14dbfdb1, org.springframework.web.filter.CorsFilter@1fc3df43, org.springframework.security.web.authentication.logout.LogoutFilter@5dd747c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@986b619, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ffa91dc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15130002, org.springframework.security.web.session.SessionManagementFilter@4c50cd7d, org.springframework.security.web.access.ExceptionTranslationFilter@71b3ba5a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3620eab]
+2026-04-28 18:31:18.895 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration': Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+2026-04-28 18:31:18.906 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 18:31:18.917 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 18:31:18.928 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration': Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.todoservice.TodoServiceApplication.main(TodoServiceApplication.java:15)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+	at com.alibaba.csp.sentinel.log.jul.DateFileLogHandler.publish(DateFileLogHandler.java:83)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.log(Logger.java:1121)
+	at com.alibaba.csp.sentinel.log.jul.BaseJulLogger.log(BaseJulLogger.java:54)
+	at com.alibaba.csp.sentinel.log.jul.JavaLoggingAdapter.warn(JavaLoggingAdapter.java:64)
+	at com.alibaba.csp.sentinel.log.RecordLog.warn(RecordLog.java:60)
+	at com.alibaba.csp.sentinel.init.InitExecutor.doInit(InitExecutor.java:61)
+	at com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration.init(SentinelAutoConfiguration.java:135)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 18 common frames omitted
+2026-04-28 18:31:43.184 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 18:31:43.240 [main] INFO  c.g.t.TodoServiceApplication - Starting TodoServiceApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 52144 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service)
+2026-04-28 18:31:43.241 [main] DEBUG c.g.t.TodoServiceApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 18:31:43.241 [main] INFO  c.g.t.TodoServiceApplication - The following 1 profile is active: "dev"
+2026-04-28 18:31:43.589 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 18:31:43.590 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 18:31:43.601 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 18:31:43.727 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=467f1881-cef7-34bb-a393-156c725a869f
+2026-04-28 18:31:43.979 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2026-04-28 18:31:43.984 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:43.985 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 18:31:43.985 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 18:31:44.073 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 18:31:44.073 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2026-04-28 18:31:44.279 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 04145ebb-da25-4c84-a730-2352ba1cc5bf
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-28 18:31:44.397 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@100eeedc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56266bda, org.springframework.security.web.context.SecurityContextPersistenceFilter@6cbdd1c5, org.springframework.security.web.header.HeaderWriterFilter@640a8f93, org.springframework.web.filter.CorsFilter@18bb1b88, org.springframework.security.web.authentication.logout.LogoutFilter@1752e45c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@678586f0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15186ce0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51b51641, org.springframework.security.web.session.SessionManagementFilter@47c96f2c, org.springframework.security.web.access.ExceptionTranslationFilter@13908f9c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@44976b08]
+2026-04-28 18:31:44.715 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:44.718 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8090 is already in use
+2026-04-28 18:31:44.728 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:44.728 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 18:31:44.731 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:44.731 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:31:44.736 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 18:31:44.745 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8090 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8090 or configure this application to listen on another port.
+
+2026-04-28 18:32:18.386 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 18:32:18.438 [main] INFO  c.g.t.TodoServiceApplication - Starting TodoServiceApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 44628 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\todo-service)
+2026-04-28 18:32:18.438 [main] DEBUG c.g.t.TodoServiceApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 18:32:18.438 [main] INFO  c.g.t.TodoServiceApplication - The following 1 profile is active: "dev"
+2026-04-28 18:32:18.794 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 18:32:18.795 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 18:32:18.805 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 18:32:18.929 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=467f1881-cef7-34bb-a393-156c725a869f
+2026-04-28 18:32:19.189 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2026-04-28 18:32:19.193 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:32:19.193 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 18:32:19.194 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 18:32:19.275 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 18:32:19.275 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 808 ms
+2026-04-28 18:32:19.488 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 7a1c3fb2-a0a6-4b94-9a10-4960c7559f31
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-28 18:32:19.608 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36cfe107, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@100eeedc, org.springframework.security.web.context.SecurityContextPersistenceFilter@2dc21583, org.springframework.security.web.header.HeaderWriterFilter@329b331f, org.springframework.web.filter.CorsFilter@56266bda, org.springframework.security.web.authentication.logout.LogoutFilter@3f06ebe0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@60816371, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@786ff0ea, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18bb1b88, org.springframework.security.web.session.SessionManagementFilter@7686f701, org.springframework.security.web.access.ExceptionTranslationFilter@1a0d313, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1857fe6c]
+2026-04-28 18:32:19.932 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2026-04-28 18:32:19.991 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2026-04-28 18:32:20.003 [main] INFO  c.g.t.TodoServiceApplication - Started TodoServiceApplication in 1.982 seconds (JVM running for 2.241)

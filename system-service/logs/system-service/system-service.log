@@ -1,0 +1,59 @@
+2026-04-28 18:30:48.734 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 18:30:48.793 [main] INFO  c.g.s.SystemServiceApplication - Starting SystemServiceApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 30148 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\system-service\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\system-service)
+2026-04-28 18:30:48.795 [main] DEBUG c.g.s.SystemServiceApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 18:30:48.795 [main] INFO  c.g.s.SystemServiceApplication - The following 1 profile is active: "dev"
+2026-04-28 18:30:49.209 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 18:30:49.210 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 18:30:49.225 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-04-28 18:30:49.349 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=fcb436ae-564e-3bdb-8fdc-9126446614d7
+2026-04-28 18:30:49.720 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8091 (http)
+2026-04-28 18:30:49.725 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8091"]
+2026-04-28 18:30:49.726 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 18:30:49.726 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 18:30:49.820 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 18:30:49.822 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 997 ms
+2026-04-28 18:30:50.140 [main] DEBUG c.g.s.config.JwtAuthorizationFilter - Filter 'jwtAuthorizationFilter' configured for use
+2026-04-28 18:30:50.251 [main] INFO  c.a.c.s.SentinelWebMvcConfigurer - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+2026-04-28 18:30:50.362 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@61d09475, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d0fabc8, org.springframework.security.web.context.SecurityContextPersistenceFilter@26c59348, org.springframework.security.web.header.HeaderWriterFilter@1f60824e, org.springframework.web.filter.CorsFilter@12d44a2a, org.springframework.security.web.authentication.logout.LogoutFilter@fe08eaf, com.gov.systemservice.config.JwtAuthenticationFilter@1a66be41, com.gov.systemservice.config.JwtAuthorizationFilter@29fcfc54, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f5f5bc9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c0e4262, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f70e244, org.springframework.security.web.session.SessionManagementFilter@29c25bbc, org.springframework.security.web.access.ExceptionTranslationFilter@7cdc4070, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@430aae8e]
+2026-04-28 18:30:50.629 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration': Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+2026-04-28 18:30:50.638 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 18:30:50.644 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 18:30:50.654 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration': Invocation of init method failed; nested exception is java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:160)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:921)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.systemservice.SystemServiceApplication.main(SystemServiceApplication.java:16)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.logging.FileHandler.publish(java.util.logging.LogRecord)" because "this.handler" is null
+	at com.alibaba.csp.sentinel.log.jul.DateFileLogHandler.publish(DateFileLogHandler.java:83)
+	at java.logging/java.util.logging.Logger.log(Logger.java:983)
+	at java.logging/java.util.logging.Logger.doLog(Logger.java:1010)
+	at java.logging/java.util.logging.Logger.log(Logger.java:1121)
+	at com.alibaba.csp.sentinel.log.jul.BaseJulLogger.log(BaseJulLogger.java:54)
+	at com.alibaba.csp.sentinel.log.jul.JavaLoggingAdapter.warn(JavaLoggingAdapter.java:64)
+	at com.alibaba.csp.sentinel.log.RecordLog.warn(RecordLog.java:60)
+	at com.alibaba.csp.sentinel.init.InitExecutor.doInit(InitExecutor.java:61)
+	at com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration.init(SentinelAutoConfiguration.java:135)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	... 18 common frames omitted

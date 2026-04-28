@@ -79,7 +79,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         }
 
         String username = claims.getSubject();
-        String userId = claims.get("userId", String.class);
+        String userId = claims.getSubject();
         String realName = claims.get("realName", String.class);
 
         log.debug("Authentication successful for user: {}, path: {}", username, path);

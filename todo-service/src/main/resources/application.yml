@@ -9,15 +9,18 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        enabled: false
+        register-enabled: false
         namespace: public
         group: DEFAULT_GROUP
         metadata:
           version: 1.0.0
     sentinel:
+      enabled: false
       transport:
         dashboard: localhost:8080
         port: 8721
-      eager: true
+      eager: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gov_todo?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
