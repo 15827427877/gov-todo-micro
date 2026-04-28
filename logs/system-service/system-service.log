@@ -605,3 +605,5 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2026-04-28 19:05:58.464 [http-nio-8091-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
 2026-04-28 19:05:59.054 [http-nio-8091-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2026-04-28 19:05:59.312 [http-nio-8091-exec-2] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin
+2026-04-28 19:14:04.360 [http-nio-8091-exec-8] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin
+2026-04-28 21:17:45.926 [http-nio-8091-exec-10] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin

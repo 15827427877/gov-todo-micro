@@ -1765,3 +1765,7 @@ Using generated security password: efab22ca-5e37-43da-b7d7-b1782fe486f7
 2026-04-28 19:10:13.402 [parallel-1] DEBUG c.g.g.filter.AuthGlobalFilter - Authentication successful for user: admin, path: /api/permissions/tree
 2026-04-28 19:10:39.685 [parallel-2] DEBUG c.g.g.filter.AuthGlobalFilter - AuthGlobalFilter processing request: /api/departments
 2026-04-28 19:10:39.690 [parallel-2] DEBUG c.g.g.filter.AuthGlobalFilter - Authentication successful for user: admin, path: /api/departments
+2026-04-28 19:14:04.249 [parallel-3] DEBUG c.g.g.filter.AuthGlobalFilter - AuthGlobalFilter processing request: /api/login
+2026-04-28 19:14:04.251 [parallel-3] DEBUG c.g.g.filter.AuthGlobalFilter - Path /api/login is in whitelist, skip authentication
+2026-04-28 21:17:45.816 [parallel-4] DEBUG c.g.g.filter.AuthGlobalFilter - AuthGlobalFilter processing request: /api/login
+2026-04-28 21:17:45.816 [parallel-4] DEBUG c.g.g.filter.AuthGlobalFilter - Path /api/login is in whitelist, skip authentication
