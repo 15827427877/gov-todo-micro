@@ -1,0 +1,628 @@
+2026-04-28 14:54:31.904 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@25:22 - no applicable action for [charset], current ElementPath  is [[configuration][appender][encoder][charset]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@46:22 - no applicable action for [charset], current ElementPath  is [[configuration][appender][encoder][charset]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@50:27 - no applicable action for [diskSyncStrategy], current ElementPath  is [[configuration][appender][diskSyncStrategy]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@25:22 - no applicable action for [charset], current ElementPath  is [[configuration][appender][encoder][charset]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@46:22 - no applicable action for [charset], current ElementPath  is [[configuration][appender][encoder][charset]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@50:27 - no applicable action for [diskSyncStrategy], current ElementPath  is [[configuration][appender][diskSyncStrategy]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:19:21.304 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@43:25 - no applicable action for [writeQueueSize], current ElementPath  is [[configuration][appender][writeQueueSize]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@43:25 - no applicable action for [writeQueueSize], current ElementPath  is [[configuration][appender][writeQueueSize]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:21:07.995 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@43:25 - no applicable action for [writeQueueSize], current ElementPath  is [[configuration][appender][writeQueueSize]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@43:25 - no applicable action for [writeQueueSize], current ElementPath  is [[configuration][appender][writeQueueSize]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:22:25.579 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:22:25.613 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:22:25.644 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 21256 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:22:25.644 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:22:25.644 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:22:26.046 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'sentinelGatewayFilter' defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.cloud.sentinel.gateway.scg.SentinelSCGAutoConfiguration; factoryMethodName=sentinelGatewayFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class]] for bean 'sentinelGatewayFilter': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=sentinelGatewayConfig; factoryMethodName=sentinelGatewayFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/gov/gatewayserver/config/SentinelGatewayConfig.class]] bound.
+2026-04-28 15:22:26.052 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:22:26.064 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'sentinelGatewayFilter', defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class], could not be registered. A bean with that name has already been defined in class path resource [com/gov/gatewayserver/config/SentinelGatewayConfig.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2026-04-28 15:22:57.610 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:22:57.647 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:22:57.686 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 31476 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:22:57.686 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:22:57.687 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:22:58.091 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'sentinelGatewayFilter' defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=com.alibaba.cloud.sentinel.gateway.scg.SentinelSCGAutoConfiguration; factoryMethodName=sentinelGatewayFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class]] for bean 'sentinelGatewayFilter': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=sentinelGatewayConfig; factoryMethodName=sentinelGatewayFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/gov/gatewayserver/config/SentinelGatewayConfig.class]] bound.
+2026-04-28 15:22:58.097 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:22:58.111 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'sentinelGatewayFilter', defined in class path resource [com/alibaba/cloud/sentinel/gateway/scg/SentinelSCGAutoConfiguration.class], could not be registered. A bean with that name has already been defined in class path resource [com/gov/gatewayserver/config/SentinelGatewayConfig.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2026-04-28 15:24:36.945 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:24:36.976 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:24:37.011 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 17084 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:24:37.012 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:24:37.012 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:24:37.483 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:24:37.484 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:24:37.498 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:24:37.619 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6c04b425-0bbd-30d7-bd18-db646a3f0c18
+2026-04-28 15:24:37.786 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:24:37.787 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:24:37.789 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:24:37.950 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-04-28 15:24:37.956 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-28 15:24:37.957 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:24:37.957 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 15:24:38.049 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:24:38.049 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1010 ms
+2026-04-28 15:24:38.156 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration]: Constructor threw exception; nested exception is org.springframework.cloud.gateway.support.MvcFoundOnClasspathException
+2026-04-28 15:24:38.158 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 15:24:38.167 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:24:38.180 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+
+Action:
+
+Please set spring.main.web-application-type=reactive or remove spring-boot-starter-web dependency.
+
+2026-04-28 15:26:49.833 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:26:49.874 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:26:49.912 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 6288 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:26:49.913 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:26:49.913 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:26:50.364 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:26:50.367 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:26:50.378 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:26:50.492 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6c04b425-0bbd-30d7-bd18-db646a3f0c18
+2026-04-28 15:26:50.645 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:26:50.646 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:26:50.647 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:26:50.800 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-04-28 15:26:50.805 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-28 15:26:50.806 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:26:50.806 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 15:26:50.896 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:26:50.898 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 956 ms
+2026-04-28 15:26:51.004 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration]: Constructor threw exception; nested exception is org.springframework.cloud.gateway.support.MvcFoundOnClasspathException
+2026-04-28 15:26:51.005 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 15:26:51.013 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:26:51.026 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+
+Action:
+
+Please set spring.main.web-application-type=reactive or remove spring-boot-starter-web dependency.
+
+2026-04-28 15:27:16.867 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:27:16.902 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:27:16.935 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 44700 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:27:16.936 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:27:16.936 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:27:17.366 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:27:17.368 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:27:17.381 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:27:17.503 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6c04b425-0bbd-30d7-bd18-db646a3f0c18
+2026-04-28 15:27:17.664 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:17.666 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:17.667 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:17.823 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-04-28 15:27:17.828 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-28 15:27:17.829 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:27:17.829 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 15:27:17.909 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:27:17.909 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 948 ms
+2026-04-28 15:27:18.009 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration]: Constructor threw exception; nested exception is org.springframework.cloud.gateway.support.MvcFoundOnClasspathException
+2026-04-28 15:27:18.011 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 15:27:18.019 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:27:18.031 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+
+Action:
+
+Please set spring.main.web-application-type=reactive or remove spring-boot-starter-web dependency.
+
+2026-04-28 15:27:23.645 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:27:23.682 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:27:23.716 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 47712 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:27:23.716 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:27:23.716 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:27:24.151 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:27:24.154 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:27:24.165 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:27:24.279 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6c04b425-0bbd-30d7-bd18-db646a3f0c18
+2026-04-28 15:27:24.439 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:24.440 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:24.441 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:27:24.596 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2026-04-28 15:27:24.602 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-04-28 15:27:24.603 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 15:27:24.603 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 15:27:24.687 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 15:27:24.687 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 945 ms
+2026-04-28 15:27:24.788 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration': Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration$SpringMvcFoundOnClasspathConfiguration]: Constructor threw exception; nested exception is org.springframework.cloud.gateway.support.MvcFoundOnClasspathException
+2026-04-28 15:27:24.790 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-04-28 15:27:24.798 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-04-28 15:27:24.810 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway.
+
+Action:
+
+Please set spring.main.web-application-type=reactive or remove spring-boot-starter-web dependency.
+
+2026-04-28 15:33:23.297 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:33:23.332 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:33:23.369 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 43844 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:33:23.369 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:33:23.369 [main] INFO  c.g.g.GatewayServerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-28 15:33:23.776 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:33:23.777 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:33:23.787 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:33:23.892 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=54fedc5e-643d-3e95-816f-8a934eba3bcb
+2026-04-28 15:33:24.040 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:33:24.041 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:33:24.042 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:33:25.265 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:33:26.286 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:33:26.726 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 15:33:26.726 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 15:33:26.726 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 15:33:26.728 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 15:33:26.729 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 15:33:26.729 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 15:33:26.729 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 15:33:26.729 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 15:33:26.729 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 15:33:26.740 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 15:33:26.740 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 15:33:26.806 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: dd3b86fe-a288-4c0e-9754-d1c0e5ddb1e5
+
+2026-04-28 15:33:26.863 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 15:33:27.888 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:33:28.034 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 15:33:28.122 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 15:33:29.140 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:33:30.153 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:33:30.182 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 15:33:30.183 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 15:33:30.682 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 15:33:30.719 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 8.811 seconds (JVM running for 9.439)
+2026-04-28 15:50:27.500 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Start destroying common HttpClient
+2026-04-28 15:50:27.500 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Start destroying Publisher
+2026-04-28 15:50:27.500 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Destruction of the end
+2026-04-28 15:50:27.500 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Destruction of the end
+2026-04-28 15:50:27.503 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registering from Nacos Server now...
+2026-04-28 15:50:27.507 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registration finished.
+2026-04-28 15:50:32.488 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@49:21 - no applicable action for [neverBlock], current ElementPath  is [[configuration][appender][neverBlock]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@49:21 - no applicable action for [neverBlock], current ElementPath  is [[configuration][appender][neverBlock]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:50:48.835 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@49:21 - no applicable action for [neverBlock], current ElementPath  is [[configuration][appender][neverBlock]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@49:21 - no applicable action for [neverBlock], current ElementPath  is [[configuration][appender][neverBlock]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:52:12.281 [main] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalStateException: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@44:21 - no applicable action for [windowSize], current ElementPath  is [[configuration][appender][windowSize]]
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:344)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:298)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:246)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:66)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:120)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:114)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.gov.gatewayserver.GatewayServerApplication.main(GatewayServerApplication.java:11)
+Caused by: java.lang.IllegalStateException: Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@44:21 - no applicable action for [windowSize], current ElementPath  is [[configuration][appender][windowSize]]
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.reportConfigurationErrorsIfNecessary(LogbackLoggingSystem.java:189)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.loadConfiguration(LogbackLoggingSystem.java:170)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initializeWithConventions(AbstractLoggingSystem.java:80)
+	at org.springframework.boot.logging.AbstractLoggingSystem.initialize(AbstractLoggingSystem.java:60)
+	at org.springframework.boot.logging.logback.LogbackLoggingSystem.initialize(LogbackLoggingSystem.java:132)
+	at org.springframework.boot.context.logging.LoggingApplicationListener.initializeSystem(LoggingApplicationListener.java:329)
+	... 18 common frames omitted
+2026-04-28 15:56:17.805 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 15:56:17.837 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 15:56:17.876 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 34028 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 15:56:17.876 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 15:56:17.877 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 15:56:18.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 15:56:18.252 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 15:56:18.264 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 15:56:18.378 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=54fedc5e-643d-3e95-816f-8a934eba3bcb
+2026-04-28 15:56:18.525 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:56:18.525 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:56:18.526 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 15:56:19.747 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:56:20.776 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 15:56:21.212 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 15:56:21.214 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 15:56:21.214 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 15:56:21.214 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 15:56:21.214 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 15:56:21.226 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 15:56:21.227 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 15:56:21.291 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 419a9992-9df0-43fd-b923-b69996202c8a
+
+2026-04-28 15:56:21.350 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 15:56:22.370 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:56:22.511 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 15:56:22.611 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 15:56:23.617 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:56:24.634 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 15:56:24.664 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 15:56:24.664 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 15:56:25.180 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 15:56:25.215 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 8.865 seconds (JVM running for 9.415)
+2026-04-28 16:08:10.285 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Start destroying common HttpClient
+2026-04-28 16:08:10.285 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Start destroying Publisher
+2026-04-28 16:08:10.286 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Destruction of the end
+2026-04-28 16:08:10.287 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Destruction of the end
+2026-04-28 16:08:10.290 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registering from Nacos Server now...
+2026-04-28 16:08:10.293 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registration finished.
+2026-04-28 16:08:16.001 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 16:08:16.043 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 16:08:16.085 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 2288 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 16:08:16.085 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 16:08:16.086 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 16:08:16.494 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 16:08:16.496 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 16:08:16.508 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 16:08:16.622 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=54fedc5e-643d-3e95-816f-8a934eba3bcb
+2026-04-28 16:08:16.775 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:08:16.776 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:08:16.778 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:08:18.001 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:08:19.031 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:08:19.494 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 16:08:19.495 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 16:08:19.496 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 16:08:19.496 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 16:08:19.496 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 16:08:19.496 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 16:08:19.497 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 16:08:19.509 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 16:08:19.509 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 16:08:19.574 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ac2fa4d7-745f-458f-b1b4-8e7915c1b53d
+
+2026-04-28 16:08:19.634 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 16:08:20.651 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:08:20.785 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 16:08:20.882 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 16:08:21.899 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:08:22.914 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:08:22.940 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 16:08:22.940 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 16:08:23.425 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 16:08:23.463 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 8.903 seconds (JVM running for 9.633)
+2026-04-28 16:09:01.501 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Start destroying common HttpClient
+2026-04-28 16:09:01.501 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Start destroying Publisher
+2026-04-28 16:09:01.502 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Destruction of the end
+2026-04-28 16:09:01.502 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Destruction of the end
+2026-04-28 16:09:01.506 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registering from Nacos Server now...
+2026-04-28 16:09:01.509 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registration finished.
+2026-04-28 16:09:06.470 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 16:09:06.503 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 16:09:06.541 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 4496 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 16:09:06.541 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 16:09:06.542 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 16:09:06.947 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 16:09:06.949 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 16:09:06.960 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 16:09:07.070 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=54fedc5e-643d-3e95-816f-8a934eba3bcb
+2026-04-28 16:09:07.222 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:09:07.223 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:09:07.225 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:09:08.462 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:09:09.492 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 16:09:09.952 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 16:09:09.953 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 16:09:09.965 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 16:09:09.965 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 16:09:10.027 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 5c29c309-391e-4d65-aec7-c58909326c2f
+
+2026-04-28 16:09:10.093 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 16:09:11.110 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:09:11.254 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 16:09:11.346 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 16:09:12.364 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:09:13.394 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:09:13.436 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 16:09:13.436 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 16:09:13.957 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 16:09:13.997 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 8.936 seconds (JVM running for 9.594)
+2026-04-28 16:11:23.106 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Start destroying common HttpClient
+2026-04-28 16:11:23.107 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Start destroying Publisher
+2026-04-28 16:11:23.107 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Destruction of the end
+2026-04-28 16:11:23.107 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Destruction of the end
+2026-04-28 16:11:23.110 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registering from Nacos Server now...
+2026-04-28 16:11:23.114 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registration finished.
+2026-04-28 16:11:27.999 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 16:11:28.029 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 16:11:28.070 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 18168 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 16:11:28.070 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 16:11:28.070 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 16:11:28.446 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 16:11:28.447 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 16:11:28.459 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 16:11:28.560 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=54fedc5e-643d-3e95-816f-8a934eba3bcb
+2026-04-28 16:11:28.787 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:11:28.788 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:11:28.789 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 16:11:30.011 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:11:31.040 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 16:11:31.489 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 16:11:31.490 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 16:11:31.501 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 16:11:31.501 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 16:11:31.563 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 84d0aaef-ab67-427a-9e8b-6be721d5bff3
+
+2026-04-28 16:11:31.615 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 16:11:32.637 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:11:32.769 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 16:11:32.877 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 16:11:33.883 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:11:34.893 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-04-28 16:11:34.926 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 16:11:34.926 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 16:11:35.396 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 16:11:35.436 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 8.847 seconds (JVM running for 9.464)

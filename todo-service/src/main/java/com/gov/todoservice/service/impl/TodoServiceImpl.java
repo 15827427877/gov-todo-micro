@@ -3,6 +3,9 @@ package com.gov.todoservice.service.impl;
 import com.gov.todoservice.mapper.TodoMapper;
 import com.gov.todoservice.pojo.TodoItem;
 import com.gov.todoservice.service.TodoService;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,17 +19,23 @@ public class TodoServiceImpl implements TodoService {
     private TodoMapper todoMapper;
 
     @Override
+    @Cacheable(value = "todos", key = "'all'")
+    @SentinelResource(value = "getAllTodos", blockHandler = "getAllTodosBlockHandler")
     public List<TodoItem> getAllTodos() {
         return todoMapper.selectAll();
     }
 
     @Override
+    @Cacheable(value = "todos", key = "#id", unless = "#result == null")
+    @SentinelResource(value = "getTodoById", blockHandler = "getTodoByIdBlockHandler")
     public TodoItem getTodoById(Long id) {
         return todoMapper.selectById(id);
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
+    @SentinelResource(value = "createTodo", blockHandler = "createTodoBlockHandler")
     public TodoItem createTodo(TodoItem todoItem) {
         todoItem.setCreateTime(LocalDateTime.now());
         todoItem.setUpdateTime(LocalDateTime.now());
@@ -121,5 +130,26 @@ public class TodoServiceImpl implements TodoService {
         statistics.put("completedRate", total > 0 ? (double) completed / total : 0.0);
         
         return statistics;
+    }
+
+    /**
+     * 降级方法：获取所有待办事项被限流时调用
+     */
+    public List<TodoItem> getAllTodosBlockHandler(com.alibaba.csp.sentinel.slots.block.BlockException ex) {
+        throw new RuntimeException("获取待办列表请求过于频繁，请稍后重试");
+    }
+
+    /**
+     * 降级方法：获取单个待办事项被限流时调用
+     */
+    public TodoItem getTodoByIdBlockHandler(Long id, com.alibaba.csp.sentinel.slots.block.BlockException ex) {
+        throw new RuntimeException("获取待办详情请求过于频繁，请稍后重试");
+    }
+
+    /**
+     * 降级方法：创建待办事项被限流时调用
+     */
+    public TodoItem createTodoBlockHandler(TodoItem todoItem, com.alibaba.csp.sentinel.slots.block.BlockException ex) {
+        throw new RuntimeException("创建待办事项请求过于频繁，请稍后重试");
     }
 }

@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Elasticsearch服务
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    container_name: elk-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - TZ=Asia/Shanghai
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elk-network
+    restart: always
+
+  # Logstash服务
+  logstash:
+    image: logstash:7.17.0
+    container_name: elk-logstash
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logs:/var/logs:ro
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    environment:
+      - TZ=Asia/Shanghai
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk-network
+    restart: always
+
+  # Kibana服务
+  kibana:
+    image: kibana:7.17.0
+    container_name: elk-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - TZ=Asia/Shanghai
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk-network
+    restart: always
+
+volumes:
+  es-data:
+    driver: local
+
+networks:
+  elk-network:
+    driver: bridge

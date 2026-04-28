@@ -15,6 +15,9 @@ import com.gov.systemservice.pojo.UserRole;
 import com.gov.systemservice.pojo.Role;
 import com.gov.systemservice.pojo.User;
 import com.gov.systemservice.service.UserService;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -49,6 +52,7 @@ public class UserServiceImpl implements UserService {
      * @return 登录响应
      */
     @Override
+    @SentinelResource(value = "userLogin", blockHandler = "loginBlockHandler")
     public LoginResponse login(LoginRequest request, String ip) {
         // 查找用户
         User user = userMapper.selectByUsername(request.getUsername());
@@ -188,7 +192,9 @@ public class UserServiceImpl implements UserService {
      * @return 用户信息
      */
     @Override
+    @Cacheable(value = "users", key = "#id", unless = "#result == null")
     public User getUserById(Long id) {
+        LogUtils.debug(UserServiceImpl.class, "从数据库查询用户ID: {}", id);
         return userMapper.selectById(id);
     }
 
@@ -198,7 +204,9 @@ public class UserServiceImpl implements UserService {
      * @return 用户信息
      */
     @Override
+    @Cacheable(value = "users", key = "#username", unless = "#result == null")
     public User getUserByUsername(String username) {
+        LogUtils.debug(UserServiceImpl.class, "从数据库查询用户: {}", username);
         return userMapper.selectByUsername(username);
     }
 
@@ -239,6 +247,7 @@ public class UserServiceImpl implements UserService {
      * @return 更新后的用户
      */
     @Override
+    @CacheEvict(value = "users", key = "#user.username")
     public User updateUser(User user) {
         // 如果密码不为空，则加密
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
@@ -254,6 +263,7 @@ public class UserServiceImpl implements UserService {
      * @return 删除结果
      */
     @Override
+    @CacheEvict(value = "users", allEntries = true)
     public boolean deleteUser(Long id) {
         int result = userMapper.deleteById(id);
         return result > 0;
@@ -305,5 +315,13 @@ public class UserServiceImpl implements UserService {
             LogUtils.error(UserServiceImpl.class, "为用户分配角色失败: userId={}, error={}", userId, e.getMessage());
             throw new RuntimeException("角色分配失败: " + e.getMessage());
         }
+    }
+
+    /**
+     * 登录方法被限流时的降级处理
+     */
+    public LoginResponse loginBlockHandler(LoginRequest request, String ip, com.alibaba.csp.sentinel.slots.block.BlockException ex) {
+        LogUtils.warn(UserServiceImpl.class, "用户登录被限流: username={}", request.getUsername());
+        throw new RuntimeException("登录请求过于频繁，请稍后重试");
     }
 }

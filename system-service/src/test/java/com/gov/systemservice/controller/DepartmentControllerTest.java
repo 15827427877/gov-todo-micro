@@ -25,7 +25,7 @@ public class DepartmentControllerTest {
         List<Department> departments = new ArrayList<>();
         Department department = new Department();
         department.setId(1L);
-        department.setDepartmentName("总部门");
+        department.setName("总部门");
         department.setParentId(0L);
         department.setLevel(1);
         departments.add(department);
@@ -41,7 +41,7 @@ public class DepartmentControllerTest {
     public void testGet() {
         Department department = new Department();
         department.setId(1L);
-        department.setDepartmentName("总部门");
+        department.setName("总部门");
         department.setParentId(0L);
         department.setLevel(1);
 
