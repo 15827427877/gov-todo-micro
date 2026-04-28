@@ -4,9 +4,13 @@
 
 Gov Todo Micro 是一个基于 Spring Cloud 的微服务架构待办事项管理系统，采用分布式设计理念，为政府办公提供高效、可扩展的待办管理解决方案。
 
-![登录界面](.docs/images/login.png)
+## 登录界面展示
 
-![首页展示](.docs/images/home.png)
+![登录界面](./docs/images/login.png)
+
+## 首页展示
+
+![首页展示](./docs/images/home.png)
 
 
 ## 技术栈
