@@ -607,3 +607,34 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2026-04-28 19:05:59.312 [http-nio-8091-exec-2] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin
 2026-04-28 19:14:04.360 [http-nio-8091-exec-8] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin
 2026-04-28 21:17:45.926 [http-nio-8091-exec-10] INFO  c.g.s.service.impl.UserServiceImpl - 用户登录成功: admin
+2026-04-28 22:43:37.556 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Start destroying Publisher
+2026-04-28 22:43:37.556 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Start destroying common HttpClient
+2026-04-28 22:43:37.556 [Thread-8] WARN  c.a.nacos.common.notify.NotifyCenter - [NotifyCenter] Destruction of the end
+2026-04-28 22:43:37.557 [Thread-11] WARN  c.a.n.c.http.HttpClientBeanHolder - [HttpClientBeanHolder] Destruction of the end
+2026-04-28 22:43:37.566 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registering from Nacos Server now...
+2026-04-28 22:43:37.570 [SpringApplicationShutdownHook] INFO  c.a.c.n.r.NacosServiceRegistry - De-registration finished.
+2026-04-28 22:43:37.690 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-28 22:43:37.710 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-28 22:43:40.024 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 22:43:40.090 [main] INFO  c.g.s.SystemServiceApplication - Starting SystemServiceApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 22200 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\system-service\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 22:43:40.090 [main] DEBUG c.g.s.SystemServiceApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 22:43:40.090 [main] INFO  c.g.s.SystemServiceApplication - The following 1 profile is active: "dev"
+2026-04-28 22:43:40.544 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 22:43:40.545 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 22:43:40.561 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-04-28 22:43:40.686 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=3958893b-60ad-3245-aed1-a1d4c03e58a1
+2026-04-28 22:43:41.067 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8091 (http)
+2026-04-28 22:43:41.072 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8091"]
+2026-04-28 22:43:41.072 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-28 22:43:41.072 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.79]
+2026-04-28 22:43:41.154 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-28 22:43:41.154 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1033 ms
+2026-04-28 22:43:41.476 [main] DEBUG c.g.s.config.JwtAuthorizationFilter - Filter 'jwtAuthorizationFilter' configured for use
+2026-04-28 22:43:41.604 [main] INFO  c.a.c.s.SentinelWebMvcConfigurer - [Sentinel Starter] register SentinelWebInterceptor with urlPatterns: [/**].
+2026-04-28 22:43:41.727 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@56a9a7b5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1dd247b, org.springframework.security.web.context.SecurityContextPersistenceFilter@b8142f4, org.springframework.security.web.header.HeaderWriterFilter@6a0e97fc, org.springframework.web.filter.CorsFilter@338270ea, org.springframework.security.web.authentication.logout.LogoutFilter@12532e37, com.gov.systemservice.config.JwtAuthenticationFilter@7f64bd7, com.gov.systemservice.config.JwtAuthorizationFilter@f44d033, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4d75c604, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30665461, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c79d093, org.springframework.security.web.session.SessionManagementFilter@45539bd8, org.springframework.security.web.access.ExceptionTranslationFilter@c0004b7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2524d07a]
+2026-04-28 22:43:42.372 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8091"]
+2026-04-28 22:43:42.387 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8091 (http) with context path ''
+2026-04-28 22:43:42.414 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 22:43:42.414 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 22:43:42.886 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP system-service 192.168.80.1:8091 register finished
+2026-04-28 22:43:42.900 [main] INFO  c.g.s.SystemServiceApplication - Started SystemServiceApplication in 3.366 seconds (JVM running for 4.165)

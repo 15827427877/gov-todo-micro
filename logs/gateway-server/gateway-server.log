@@ -1769,3 +1769,114 @@ Using generated security password: efab22ca-5e37-43da-b7d7-b1782fe486f7
 2026-04-28 19:14:04.251 [parallel-3] DEBUG c.g.g.filter.AuthGlobalFilter - Path /api/login is in whitelist, skip authentication
 2026-04-28 21:17:45.816 [parallel-4] DEBUG c.g.g.filter.AuthGlobalFilter - AuthGlobalFilter processing request: /api/login
 2026-04-28 21:17:45.816 [parallel-4] DEBUG c.g.g.filter.AuthGlobalFilter - Path /api/login is in whitelist, skip authentication
+2026-04-28 22:43:28.338 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 22:43:28.372 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 22:43:28.413 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 16096 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 22:43:28.413 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 22:43:28.413 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 22:43:28.845 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 22:43:28.846 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 22:43:28.858 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 22:43:28.955 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d26e388f-fe03-3cf6-a95f-49c3110ce0cf
+2026-04-28 22:43:29.100 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:43:29.101 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:43:29.102 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:43:29.305 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 0a66a9d3-6bd6-4963-9cbd-008e9e2e3634
+
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 22:43:29.820 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 22:43:29.821 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 22:43:29.834 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 22:43:29.834 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 22:43:29.906 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 22:43:30.052 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 22:43:30.141 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 22:43:30.186 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 2.277 seconds (JVM running for 2.936)
+2026-04-28 22:44:07.192 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 22:44:07.221 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 22:44:07.263 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 35824 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 22:44:07.264 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 22:44:07.265 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 22:44:07.659 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 22:44:07.661 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 22:44:07.672 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2026-04-28 22:44:07.778 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b58f0a93-aebc-3b9c-8453-b9ce89c4de5e
+2026-04-28 22:44:07.918 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:44:07.918 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:44:07.921 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:44:08.107 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 83df9e35-999d-482f-b623-8657efeba9ab
+
+2026-04-28 22:44:08.631 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 22:44:08.632 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 22:44:08.633 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 22:44:08.646 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 22:44:08.647 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 22:44:08.720 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 22:44:08.866 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 22:44:08.955 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 22:44:09.028 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 2.303 seconds (JVM running for 3.04)
+2026-04-28 22:45:00.182 [main] INFO  c.a.n.c.env.SearchableProperties - properties search order:PROPERTIES->JVM->ENV->DEFAULT_SETTING
+2026-04-28 22:45:00.215 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.5.Final
+2026-04-28 22:45:00.259 [main] INFO  c.g.g.GatewayServerApplication - Starting GatewayServerApplication using Java 21.0.10 on DESKTOP-KIBNON4 with PID 27372 (D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro\gateway-server\target\classes started by MECHREVO in D:\IDEA-WorkSpace\gov-todo-micro\gov-todo-micro)
+2026-04-28 22:45:00.260 [main] DEBUG c.g.g.GatewayServerApplication - Running with Spring Boot v2.7.15, Spring v5.3.29
+2026-04-28 22:45:00.260 [main] INFO  c.g.g.GatewayServerApplication - The following 1 profile is active: "dev"
+2026-04-28 22:45:00.661 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-28 22:45:00.662 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-28 22:45:00.674 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2026-04-28 22:45:00.786 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b58f0a93-aebc-3b9c-8453-b9ce89c4de5e
+2026-04-28 22:45:00.932 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:45:00.933 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:45:00.934 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-04-28 22:45:01.131 [main] INFO  o.s.b.a.s.r.ReactiveUserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 715621bc-291e-40a1-bdd1-62783eaa4192
+
+2026-04-28 22:45:01.681 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [After]
+2026-04-28 22:45:01.681 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Before]
+2026-04-28 22:45:01.682 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Between]
+2026-04-28 22:45:01.682 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Cookie]
+2026-04-28 22:45:01.682 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Header]
+2026-04-28 22:45:01.682 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Host]
+2026-04-28 22:45:01.682 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Method]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Path]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Query]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [ReadBody]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [RemoteAddr]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [Weight]
+2026-04-28 22:45:01.683 [main] INFO  o.s.c.g.r.RouteDefinitionRouteLocator - Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2026-04-28 22:45:01.696 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] using AnonymousBlockRequestHandler, responseStatus: 429, responseBody: {"code":429,"message":"请求过于频繁,请稍后重试"}
+2026-04-28 22:45:01.696 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayFilter with order: -2147483648
+2026-04-28 22:45:01.769 [main] INFO  c.a.c.s.g.s.SentinelSCGAutoConfiguration - [Sentinel SpringCloudGateway] register SentinelGatewayBlockExceptionHandler
+2026-04-28 22:45:01.918 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-04-28 22:45:02.012 [main] INFO  o.s.b.w.e.netty.NettyWebServer - Netty started on port 8081
+2026-04-28 22:45:02.046 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.impl.NacosClientAuthServiceImpl success.
+2026-04-28 22:45:02.046 [main] INFO  c.a.n.p.a.s.c.ClientAuthPluginManager - [ClientAuthPluginManager] Load ClientAuthService com.alibaba.nacos.client.auth.ram.RamClientAuthServiceImpl success.
+2026-04-28 22:45:02.594 [main] INFO  c.a.c.n.r.NacosServiceRegistry - nacos registry, DEFAULT_GROUP gateway-server 192.168.80.1:8081 register finished
+2026-04-28 22:45:02.638 [main] INFO  c.g.g.GatewayServerApplication - Started GatewayServerApplication in 2.873 seconds (JVM running for 3.503)
