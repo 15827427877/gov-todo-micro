@@ -3,7 +3,9 @@ package com.gov.common.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +32,22 @@ import java.time.Duration;
 public class RedisConfig {
 
     /**
+     * 配置ObjectMapper，支持Java 8日期时间类型
+     */
+    private ObjectMapper createObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        // 注册JavaTimeModule，支持Java 8日期时间类型
+        mapper.registerModule(new JavaTimeModule());
+        // 禁用将日期写为时间戳
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        // 设置可见性
+        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        // 启用默认类型信息
+        mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
+        return mapper;
+    }
+
+    /**
      * 配置RedisTemplate
      */
     @Bean
@@ -43,7 +61,7 @@ public class RedisConfig {
         template.setHashKeySerializer(stringRedisSerializer);
 
         // 使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
-        GenericJackson2JsonRedisSerializer jsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
+        GenericJackson2JsonRedisSerializer jsonRedisSerializer = new GenericJackson2JsonRedisSerializer(createObjectMapper());
         template.setValueSerializer(jsonRedisSerializer);
         template.setHashValueSerializer(jsonRedisSerializer);
 
@@ -56,8 +74,8 @@ public class RedisConfig {
      */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory factory) {
-        // 使用Jackson2JsonRedisSerializer
-        GenericJackson2JsonRedisSerializer jsonSerializer = new GenericJackson2JsonRedisSerializer();
+        // 使用Jackson2JsonRedisSerializer，支持Java 8日期时间类型
+        GenericJackson2JsonRedisSerializer jsonSerializer = new GenericJackson2JsonRedisSerializer(createObjectMapper());
 
         // 配置序列化规则
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
