@@ -9,8 +9,14 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TodoServiceImpl implements TodoService {
@@ -96,7 +102,6 @@ public class TodoServiceImpl implements TodoService {
             throw new RuntimeException("Todo not found with id: " + id);
         }
         existingTodo.setStatus(status);
-        // 根据 status 字段更新 completed 字段
         existingTodo.setCompleted("已完成".equals(status));
         existingTodo.setUpdateTime(java.time.LocalDateTime.now());
         todoMapper.update(existingTodo);
@@ -117,38 +122,57 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public java.util.Map<String, Object> getStatistics() {
+    public Map<String, Object> getStatistics() {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        LocalDate sevenDaysAgo = today.minusDays(7);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
         List<TodoItem> allTodos = todoMapper.selectAll();
+        List<TodoItem> todayTodos = todoMapper.selectByCreateDate(today.format(formatter));
+        List<TodoItem> yesterdayTodos = todoMapper.selectByCreateDate(yesterday.format(formatter));
+        List<TodoItem> sevenDaysTodos = todoMapper.selectByCreateDateBetween(sevenDaysAgo.format(formatter), today.format(formatter));
+
         long total = allTodos.size();
+        long todayAdded = todayTodos.size();
+        long yesterdayAdded = yesterdayTodos.size();
         long completed = allTodos.stream().filter(todo -> todo.getCompleted() != null && todo.getCompleted()).count();
         long pending = total - completed;
-        
-        java.util.Map<String, Object> statistics = new java.util.HashMap<>();
+        long pendingApproval = todoMapper.countByStatus("待审批");
+
+        double completionRate = total > 0 ? (double) completed / total * 100 : 0.0;
+
+        double totalTrend = yesterdayAdded > 0 ? (double) (todayAdded - yesterdayAdded) / yesterdayAdded * 100 : 0.0;
+        double addedTrend = yesterdayAdded > 0 ? (double) (todayAdded - yesterdayAdded) / yesterdayAdded * 100 : 0.0;
+
+        double completedYesterday = yesterdayTodos.stream().filter(todo -> todo.getCompleted() != null && todo.getCompleted()).count();
+        double completionRateYesterday = yesterdayTodos.size() > 0 ? completedYesterday / yesterdayTodos.size() * 100 : 0.0;
+        double rateTrend = completionRate - completionRateYesterday;
+
+        double approvalTrend = 0.0;
+
+        Map<String, Object> statistics = new HashMap<>();
         statistics.put("total", total);
-        statistics.put("completed", completed);
-        statistics.put("pending", pending);
-        statistics.put("completedRate", total > 0 ? (double) completed / total : 0.0);
-        
+        statistics.put("todayAdded", todayAdded);
+        statistics.put("completionRate", Math.round(completionRate * 100.0) / 100.0);
+        statistics.put("pendingApproval", pendingApproval);
+        statistics.put("totalTrend", Math.round(totalTrend * 100.0) / 100.0);
+        statistics.put("addedTrend", Math.round(addedTrend * 100.0) / 100.0);
+        statistics.put("rateTrend", Math.round(rateTrend * 100.0) / 100.0);
+        statistics.put("approvalTrend", approvalTrend);
+
         return statistics;
     }
 
-    /**
-     * 降级方法：获取所有待办事项被限流时调用
-     */
     public List<TodoItem> getAllTodosBlockHandler(com.alibaba.csp.sentinel.slots.block.BlockException ex) {
         throw new RuntimeException("获取待办列表请求过于频繁，请稍后重试");
     }
 
-    /**
-     * 降级方法：获取单个待办事项被限流时调用
-     */
     public TodoItem getTodoByIdBlockHandler(Long id, com.alibaba.csp.sentinel.slots.block.BlockException ex) {
         throw new RuntimeException("获取待办详情请求过于频繁，请稍后重试");
     }
 
-    /**
-     * 降级方法：创建待办事项被限流时调用
-     */
     public TodoItem createTodoBlockHandler(TodoItem todoItem, com.alibaba.csp.sentinel.slots.block.BlockException ex) {
         throw new RuntimeException("创建待办事项请求过于频繁，请稍后重试");
     }

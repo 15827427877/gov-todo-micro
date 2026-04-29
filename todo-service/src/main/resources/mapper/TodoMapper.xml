@@ -58,4 +58,22 @@
         </foreach>
     </delete>
 
+    <select id="selectByCreateDate" resultMap="BaseResultMap">
+        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        FROM todo_item
+        WHERE DATE(create_time) = #{date}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByCreateDateBetween" resultMap="BaseResultMap">
+        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        FROM todo_item
+        WHERE DATE(create_time) BETWEEN #{startDate} AND #{endDate}
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="countByStatus" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM todo_item WHERE status = #{status}
+    </select>
+
 </mapper>
