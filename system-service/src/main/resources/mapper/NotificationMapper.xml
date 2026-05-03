@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.NotificationMapper">
+
+    <resultMap id="NotificationResultMap" type="com.gov.systemservice.pojo.Notification">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="type" property="type"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="read" property="read"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <select id="selectByUserId" resultMap="NotificationResultMap">
+        SELECT id, user_id, type, title, description, `read`, create_time
+        FROM notification
+        WHERE user_id = #{userId}
+        ORDER BY create_time DESC
+    </select>
+
+    <update id="updateReadById">
+        UPDATE notification
+        SET `read` = 1
+        WHERE id = #{id} AND user_id = #{userId}
+    </update>
+
+    <update id="updateAllReadByUserId">
+        UPDATE notification
+        SET `read` = 1
+        WHERE user_id = #{userId} AND `read` = 0
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM notification WHERE id = #{id} AND user_id = #{userId}
+    </delete>
+
+    <select id="countUnreadByUserId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM notification WHERE user_id = #{userId} AND `read` = 0
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Notification" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO notification (user_id, type, title, description, `read`, create_time)
+        VALUES (#{userId}, #{type}, #{title}, #{description}, #{read}, #{createTime})
+    </insert>
+
+</mapper>

@@ -55,7 +55,7 @@ spring:
         - id: system-service
           uri: http://localhost:8091
           predicates:
-            - Path=/api/roles/**,/api/permissions/**,/api/permission/**,/api/users/**,/api/departments/**,/api/modules/**,/api/system/**,/api/dict/**,/api/dicts/**,/api/approvals/**,/system/**
+            - Path=/api/roles/**,/api/permissions/**,/api/permission/**,/api/users/**,/api/departments/**,/api/modules/**,/api/system/**,/api/dict/**,/api/dicts/**,/api/approvals/**,/api/notifications/**,/system/**
           filters:
             - RewritePath=/api/(?<segment>.*), /api/${segment}
 
