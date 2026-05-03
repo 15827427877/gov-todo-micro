@@ -1,38 +1,69 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Compiled class files
+*.class
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Log files
+*.log
+logs/
+*.log.*
+
+# IDE directories
+.idea/
+.ide/
 *.iml
 *.ipr
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
+*.iws
 .project
-.settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+.classpath
+.settings/
 .vscode/
+*.swp
+*.swo
+*~
 
-### Mac OS ###
+# Maven build output
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle build output
+build/
+.gradle/
+gradle-app.setting
+
+# Eclipse
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS files
 .DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Database files
+*.db
+*.sql
+*.sqlite
+
+# Spring Boot
+application-local.yml
+application-local.properties
+bootstrap-local.yml
+bootstrap-local.properties
+
+# Docker
+docker-compose.override.yml

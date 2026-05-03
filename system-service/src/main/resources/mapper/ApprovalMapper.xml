@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.ApprovalMapper">
+
+    <resultMap id="BaseResultMap" type="com.gov.systemservice.pojo.Approval">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="type" property="type"/>
+        <result column="applicant" property="applicant"/>
+        <result column="applicant_id" property="applicantId"/>
+        <result column="department" property="department"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <result column="approver" property="approver"/>
+        <result column="approver_id" property="approverId"/>
+        <result column="approve_time" property="approveTime"/>
+        <result column="comment" property="comment"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        SELECT id, title, type, applicant, applicant_id, department, content, status,
+               approver, approver_id, approve_time, comment, create_time, update_time
+        FROM approval
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (title LIKE CONCAT('%', #{keyword}, '%') OR applicant LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="type != null and type != ''">
+                AND type = #{type}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT id, title, type, applicant, applicant_id, department, content, status,
+               approver, approver_id, approve_time, comment, create_time, update_time
+        FROM approval
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.gov.systemservice.pojo.Approval" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO approval (title, type, applicant, applicant_id, department, content, status, create_time, update_time)
+        VALUES (#{title}, #{type}, #{applicant}, #{applicantId}, #{department}, #{content}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="update" parameterType="com.gov.systemservice.pojo.Approval">
+        UPDATE approval
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="applicant != null">applicant = #{applicant},</if>
+            <if test="applicantId != null">applicant_id = #{applicantId},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="approver != null">approver = #{approver},</if>
+            <if test="approverId != null">approver_id = #{approverId},</if>
+            <if test="approveTime != null">approve_time = #{approveTime},</if>
+            <if test="comment != null">comment = #{comment},</if>
+            update_time = NOW()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM approval WHERE id = #{id}
+    </delete>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(*) FROM approval
+        <where>
+            <if test="keyword != null and keyword != ''">
+                AND (title LIKE CONCAT('%', #{keyword}, '%') OR applicant LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="type != null and type != ''">
+                AND type = #{type}
+            </if>
+        </where>
+    </select>
+
+</mapper>

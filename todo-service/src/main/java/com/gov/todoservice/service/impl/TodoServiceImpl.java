@@ -1,7 +1,9 @@
 package com.gov.todoservice.service.impl;
 
 import com.gov.todoservice.mapper.TodoMapper;
+import com.gov.todoservice.pojo.Activity;
 import com.gov.todoservice.pojo.TodoItem;
+import com.gov.todoservice.service.ActivityService;
 import com.gov.todoservice.service.TodoService;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.cache.annotation.CacheEvict;
@@ -23,6 +25,9 @@ public class TodoServiceImpl implements TodoService {
 
     @Autowired
     private TodoMapper todoMapper;
+
+    @Autowired
+    private ActivityService activityService;
 
     @Override
     @Cacheable(value = "todos", key = "'all'")
@@ -47,11 +52,27 @@ public class TodoServiceImpl implements TodoService {
         todoItem.setUpdateTime(LocalDateTime.now());
         todoItem.setCompleted(false);
         todoMapper.insert(todoItem);
+
+        // 记录活动
+        Activity activity = new Activity();
+        activity.setUserId(todoItem.getUserId() != null ? todoItem.getUserId() : 1L);
+        activity.setUserName(todoItem.getAssignee() != null ? todoItem.getAssignee() : "system");
+        activity.setTitle("创建了待办事项");
+        activity.setContent("创建了待办事项：" + todoItem.getTitle());
+        activity.setActionType("CREATE");
+        activity.setStatus("成功");
+        activity.setStatusType("success");
+        activity.setIcon("el-icon-plus");
+        activity.setRelatedId(todoItem.getId());
+        activity.setRelatedType("TODO");
+        activityService.recordActivity(activity);
+
         return todoItem;
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
     public TodoItem updateTodo(Long id, TodoItem todoItem) {
         TodoItem existingTodo = todoMapper.selectById(id);
         if (existingTodo == null) {
@@ -79,23 +100,41 @@ public class TodoServiceImpl implements TodoService {
         existingTodo.setUpdateTime(LocalDateTime.now());
 
         todoMapper.update(existingTodo);
+
+        // 记录活动
+        Activity activity = new Activity();
+        activity.setUserId(existingTodo.getUserId() != null ? existingTodo.getUserId() : 1L);
+        activity.setUserName(existingTodo.getAssignee() != null ? existingTodo.getAssignee() : "system");
+        activity.setTitle("更新了待办事项");
+        activity.setContent("更新了待办事项：" + existingTodo.getTitle());
+        activity.setActionType("UPDATE");
+        activity.setStatus("成功");
+        activity.setStatusType("primary");
+        activity.setIcon("el-icon-edit");
+        activity.setRelatedId(existingTodo.getId());
+        activity.setRelatedType("TODO");
+        activityService.recordActivity(activity);
+
         return existingTodo;
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
     public boolean deleteTodo(Long id) {
         return todoMapper.deleteById(id) > 0;
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
     public boolean deleteTodos(List<Long> ids) {
         return todoMapper.deleteByIds(ids) > 0;
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
     public TodoItem updateStatus(Long id, String status) {
         TodoItem existingTodo = todoMapper.selectById(id);
         if (existingTodo == null) {
@@ -105,11 +144,27 @@ public class TodoServiceImpl implements TodoService {
         existingTodo.setCompleted("已完成".equals(status));
         existingTodo.setUpdateTime(java.time.LocalDateTime.now());
         todoMapper.update(existingTodo);
+
+        // 记录活动
+        Activity activity = new Activity();
+        activity.setUserId(existingTodo.getUserId() != null ? existingTodo.getUserId() : 1L);
+        activity.setUserName(existingTodo.getAssignee() != null ? existingTodo.getAssignee() : "system");
+        activity.setTitle("更新了待办状态");
+        activity.setContent("将待办事项\"" + existingTodo.getTitle() + "\"状态更新为\"" + status + "\"");
+        activity.setActionType("STATUS_CHANGE");
+        activity.setStatus(status);
+        activity.setStatusType("已完成".equals(status) ? "success" : "primary");
+        activity.setIcon("el-icon-edit");
+        activity.setRelatedId(existingTodo.getId());
+        activity.setRelatedType("TODO");
+        activityService.recordActivity(activity);
+
         return existingTodo;
     }
 
     @Override
     @Transactional
+    @CacheEvict(value = "todos", allEntries = true)
     public TodoItem transferTodo(Long id, String assignee) {
         TodoItem existingTodo = todoMapper.selectById(id);
         if (existingTodo == null) {
@@ -118,6 +173,21 @@ public class TodoServiceImpl implements TodoService {
         existingTodo.setAssignee(assignee);
         existingTodo.setUpdateTime(java.time.LocalDateTime.now());
         todoMapper.update(existingTodo);
+
+        // 记录活动
+        Activity activity = new Activity();
+        activity.setUserId(existingTodo.getUserId() != null ? existingTodo.getUserId() : 1L);
+        activity.setUserName(existingTodo.getAssignee() != null ? existingTodo.getAssignee() : "system");
+        activity.setTitle("转交待办事项");
+        activity.setContent("将待办事项\"" + existingTodo.getTitle() + "\"转交给\"" + assignee + "\"");
+        activity.setActionType("TRANSFER");
+        activity.setStatus("成功");
+        activity.setStatusType("info");
+        activity.setIcon("el-icon-s-promotion");
+        activity.setRelatedId(existingTodo.getId());
+        activity.setRelatedType("TODO");
+        activityService.recordActivity(activity);
+
         return existingTodo;
     }
 

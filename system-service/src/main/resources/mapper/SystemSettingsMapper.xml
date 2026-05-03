@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gov.systemservice.mapper.SystemSettingsMapper">
+
+    <resultMap id="SettingsResultMap" type="com.gov.systemservice.pojo.UserNotificationSettings">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="todo_reminder" property="todoReminder"/>
+        <result column="reminder_time" property="reminderTime"/>
+        <result column="approval_notice" property="approvalNotice"/>
+        <result column="system_notice" property="systemNotice"/>
+        <result column="notify_ways" property="notifyWaysStr"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <resultMap id="DeviceResultMap" type="com.gov.systemservice.pojo.UserLoginDevice">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="device" property="device"/>
+        <result column="location" property="location"/>
+        <result column="ip" property="ip"/>
+        <result column="login_time" property="loginTime"/>
+        <result column="is_current" property="isCurrent"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <resultMap id="LoginLogResultMap" type="com.gov.systemservice.pojo.LoginLog">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="device" property="device"/>
+        <result column="location" property="location"/>
+        <result column="ip" property="ip"/>
+        <result column="status" property="status"/>
+        <result column="login_time" property="loginTime"/>
+    </resultMap>
+
+    <resultMap id="OperationLogResultMap" type="com.gov.systemservice.pojo.OperationLog">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="operation" property="operation"/>
+        <result column="module" property="module"/>
+        <result column="detail" property="detail"/>
+        <result column="ip" property="ip"/>
+        <result column="time" property="time"/>
+    </resultMap>
+
+    <select id="selectNotificationSettingsByUserId" resultMap="SettingsResultMap">
+        SELECT id, user_id, todo_reminder, reminder_time, approval_notice, system_notice, notify_ways, update_time
+        FROM user_notification_settings
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertNotificationSettings" parameterType="com.gov.systemservice.pojo.UserNotificationSettings" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_notification_settings (user_id, todo_reminder, reminder_time, approval_notice, system_notice, notify_ways)
+        VALUES (#{userId}, #{todoReminder}, #{reminderTime}, #{approvalNotice}, #{systemNotice}, #{notifyWaysStr})
+    </insert>
+
+    <update id="updateNotificationSettings" parameterType="com.gov.systemservice.pojo.UserNotificationSettings">
+        UPDATE user_notification_settings
+        <set>
+            <if test="todoReminder != null">todo_reminder = #{todoReminder},</if>
+            <if test="reminderTime != null">reminder_time = #{reminderTime},</if>
+            <if test="approvalNotice != null">approval_notice = #{approvalNotice},</if>
+            <if test="systemNotice != null">system_notice = #{systemNotice},</if>
+            <if test="notifyWaysStr != null">notify_ways = #{notifyWaysStr},</if>
+            update_time = NOW()
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+    <select id="selectLoginDevicesByUserId" resultMap="DeviceResultMap">
+        SELECT id, user_id, device, location, ip, login_time, is_current, create_time
+        FROM user_login_device
+        WHERE user_id = #{userId}
+        ORDER BY login_time DESC
+    </select>
+
+    <delete id="deleteLoginDeviceById">
+        DELETE FROM user_login_device WHERE id = #{id}
+    </delete>
+
+    <update id="deleteLoginDevicesByUserIdExceptCurrent">
+        DELETE FROM user_login_device WHERE user_id = #{userId} AND is_current = 0
+    </update>
+
+    <select id="selectLoginLogsByUserId" resultMap="LoginLogResultMap">
+        SELECT id, user_id, device, location, ip, status, login_time
+        FROM login_log
+        WHERE user_id = #{userId}
+        ORDER BY login_time DESC
+    </select>
+
+    <select id="selectOperationLogsByUserId" resultMap="OperationLogResultMap">
+        SELECT id, user_id, operation, module, detail, ip, time
+        FROM operation_log
+        WHERE user_id = #{userId}
+        ORDER BY time DESC
+    </select>
+
+</mapper>

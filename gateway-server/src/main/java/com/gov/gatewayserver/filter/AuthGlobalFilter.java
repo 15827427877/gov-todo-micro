@@ -79,17 +79,29 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         }
 
         String username = claims.getSubject();
-        String userId = claims.getSubject();
-        String realName = claims.get("realName", String.class);
+        Object userIdObj = claims.get("userId");
+        Object realNameObj = claims.get("realName");
+
+        String userId = userIdObj != null ? String.valueOf(userIdObj) : "";
+        String realName = realNameObj != null ? String.valueOf(realNameObj) : "";
 
         log.debug("Authentication successful for user: {}, path: {}", username, path);
 
         // 将用户信息添加到请求头,传递给下游服务
-        ServerHttpRequest mutatedRequest = request.mutate()
-                .header("X-User-Name", username != null ? username : "")
-                .header("X-User-Id", userId != null ? userId : "")
-                .header("X-User-RealName", realName != null ? realName : "")
-                .build();
+        ServerHttpRequest.Builder requestBuilder = request.mutate();
+
+        // 安全地添加header，避免Netty验证失败
+        if (username != null && !username.isEmpty()) {
+            requestBuilder.header("X-User-Name", safeHeaderValue(username));
+        }
+        if (userId != null && !userId.isEmpty()) {
+            requestBuilder.header("X-User-Id", safeHeaderValue(userId));
+        }
+        if (realName != null && !realName.isEmpty()) {
+            requestBuilder.header("X-User-RealName", safeHeaderValue(realName));
+        }
+
+        ServerHttpRequest mutatedRequest = requestBuilder.build();
 
         return chain.filter(exchange.mutate().request(mutatedRequest).build());
     }
@@ -130,5 +142,24 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         DataBuffer buffer = response.bufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8));
         
         return response.writeWith(Mono.just(buffer));
+    }
+
+    /**
+     * 安全地处理header值，确保符合Netty验证要求
+     */
+    private String safeHeaderValue(String value) {
+        if (value == null) {
+            return "";
+        }
+        // 只保留可打印ASCII字符
+        StringBuilder sb = new StringBuilder();
+        for (char c : value.toCharArray()) {
+            if (c >= 32 && c < 127) {
+                sb.append(c);
+            }
+        }
+        String result = sb.toString().trim();
+        // 如果结果为空，返回默认值
+        return result.isEmpty() ? "unknown" : result;
     }
 }

@@ -11,26 +11,32 @@
         <result column="deadline" property="deadline"/>
         <result column="description" property="description"/>
         <result column="completed" property="completed"/>
+        <result column="user_id" property="userId"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="priority" property="priority"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="completed_time" property="completedTime"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time, completed_time, create_time, update_time
         FROM todo_item
         ORDER BY create_time DESC
     </select>
 
     <select id="selectById" resultMap="BaseResultMap">
-        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time, completed_time, create_time, update_time
         FROM todo_item
         WHERE id = #{id}
     </select>
 
     <insert id="insert" parameterType="com.gov.todoservice.pojo.TodoItem"
             useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO todo_item (title, assignee, status, deadline, description, completed, create_time, update_time)
-        VALUES (#{title}, #{assignee}, #{status}, #{deadline}, #{description}, #{completed}, #{createTime}, #{updateTime})
+        INSERT INTO todo_item (title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time, completed_time, create_time, update_time)
+        VALUES (#{title}, #{assignee}, #{status}, #{deadline}, #{description}, #{completed}, #{userId}, #{departmentId}, #{priority}, #{startTime}, #{endTime}, #{completedTime}, #{createTime}, #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.gov.todoservice.pojo.TodoItem">
@@ -42,6 +48,12 @@
             <if test="deadline != null">deadline = #{deadline},</if>
             <if test="description != null">description = #{description},</if>
             <if test="completed != null">completed = #{completed},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="departmentId != null">department_id = #{departmentId},</if>
+            <if test="priority != null">priority = #{priority},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="completedTime != null">completed_time = #{completedTime},</if>
             update_time = #{updateTime}
         </set>
         WHERE id = #{id}
@@ -59,14 +71,14 @@
     </delete>
 
     <select id="selectByCreateDate" resultMap="BaseResultMap">
-        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time, completed_time, create_time, update_time
         FROM todo_item
         WHERE DATE(create_time) = #{date}
         ORDER BY create_time DESC
     </select>
 
     <select id="selectByCreateDateBetween" resultMap="BaseResultMap">
-        SELECT id, title, assignee, status, deadline, description, completed, create_time, update_time
+        SELECT id, title, assignee, status, deadline, description, completed, user_id, department_id, priority, start_time, end_time, completed_time, create_time, update_time
         FROM todo_item
         WHERE DATE(create_time) BETWEEN #{startDate} AND #{endDate}
         ORDER BY create_time DESC

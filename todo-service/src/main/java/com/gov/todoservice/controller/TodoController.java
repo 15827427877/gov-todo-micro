@@ -1,11 +1,14 @@
 package com.gov.todoservice.controller;
 
 import com.gov.common.Result;
+import com.gov.todoservice.pojo.Activity;
 import com.gov.todoservice.pojo.TodoItem;
+import com.gov.todoservice.service.ActivityService;
 import com.gov.todoservice.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +18,9 @@ public class TodoController {
 
     @Autowired
     private TodoService todoService;
+
+    @Autowired
+    private ActivityService activityService;
 
     @GetMapping("/list")
     public Result<?> list(
@@ -77,6 +83,24 @@ public class TodoController {
 
     @DeleteMapping("/{id}")
     public Result<Void> delete(@PathVariable Long id) {
+        // 先获取待办信息用于记录活动
+        TodoItem todoItem = todoService.getTodoById(id);
+        if (todoItem != null) {
+            // 记录删除活动
+            Activity activity = new Activity();
+            activity.setUserId(todoItem.getUserId() != null ? todoItem.getUserId() : 1L);
+            activity.setUserName(todoItem.getAssignee() != null ? todoItem.getAssignee() : "system");
+            activity.setTitle("删除了待办事项");
+            activity.setContent("删除了待办事项：" + todoItem.getTitle());
+            activity.setActionType("DELETE");
+            activity.setStatus("成功");
+            activity.setStatusType("danger");
+            activity.setIcon("el-icon-delete");
+            activity.setRelatedId(id);
+            activity.setRelatedType("TODO");
+            activityService.recordActivity(activity);
+        }
+
         todoService.deleteTodo(id);
         return Result.success(null, "删除成功");
     }
