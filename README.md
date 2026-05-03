@@ -18,7 +18,6 @@ Gov Todo Micro 是一个基于 Spring Cloud 的微服务架构待办事项管理
   <img src="./docs/images/home.png" alt="首页展示" width="800">
 </p>
 
-
 ## 技术栈
 
 ### 核心框架
@@ -67,27 +66,26 @@ gov-todo-micro/
 │   ├── controller/         # REST API控制器
 │   ├── service/            # 业务逻辑层
 │   ├── mapper/             # 数据访问层
+│   ├── pojo/              # 实体类
 │   ├── config/             # 安全与缓存配置
 │   └── resources/
 │       ├── application.yml
-│       └── logback-spring.xml
+│       └── mapper/         # MyBatis XML映射
 ├── todo-service/            # 待办事项服务 (端口: 8090)
 │   ├── controller/
 │   ├── service/
 │   ├── mapper/
 │   └── resources/
 │       ├── application.yml
-│       └── logback-spring.xml
+│       └── mapper/         # MyBatis XML映射
 ├── common/                  # 公共模块
 │   ├── utils/              # 工具类 (JWT、Redis、认证)
 │   ├── config/             # 通用配置 (Redis、缓存)
-│   └── test/               # 测试工具类
+│   └── result/              # 统一返回格式
 ├── docs/
 │   ├── sql/                # 数据库初始化脚本
+│   ├── images/             # 项目截图
 │   └── elk/                # ELK部署配置
-│       ├── docker-compose.yml
-│       ├── logstash.conf
-│       └── README.md
 └── pom.xml                 # 父 POM 文件
 ```
 
@@ -111,29 +109,20 @@ gov-todo-micro/
 - **角色权限管理**: 角色分配、权限控制
 - **部门管理**: 组织架构管理
 - **字典管理**: 系统字典配置
+- **审批管理**: 请假、报销、加班等审批流程
+- **系统设置**: 通知设置、登录设备、日志查询
 - **缓存支持**: Redis 缓存用户查询结果
 - **限流保护**: Sentinel 资源保护
 - **安全认证**: Spring Security + JWT
-
-**核心特性:**
-- `@Cacheable` 用户查询缓存
-- `@SentinelResource` 登录接口限流
-- 基于 Gateway 传递的用户信息进行权限校验
 
 ### 3. todo-service (待办事项服务)
 - **待办事项增删改查**: 完整的 CRUD 操作
 - **状态管理**: 待办状态流转控制
 - **任务转派**: 待办事项转交功能
 - **统计分析**: 待办完成情况统计
+- **活动记录**: 记录待办操作日志
 - **缓存优化**: Redis 缓存高频查询
 - **限流降级**: 关键接口 Sentinel 保护
-
-**架构分层:**
-- **Controller**: `TodoController` - RESTful API 接口
-- **Service**: `TodoService` / `TodoServiceImpl` - 业务逻辑 (含缓存和限流)
-- **Mapper**: `TodoMapper` - 数据访问层
-- **POJO**: `TodoItem` - 数据实体
-- **Exception**: `GlobalExceptionHandler` - 全局异常处理
 
 ### 4. common (公共模块)
 - **JWT 工具**: `JwtUtils` - 令牌生成和验证
@@ -147,7 +136,30 @@ gov-todo-micro/
 
 ## 数据库设计
 
-数据库初始化脚本位于 `scripts/init.sql`
+数据库初始化脚本位于 `docs/sql/` 目录：
+
+| 脚本 | 说明 |
+|------|------|
+| `full_init.sql` | 完整数据库初始化脚本 |
+| `approval.sql` | 审批管理表 |
+| `system-settings.sql` | 系统设置相关表 |
+
+### 主要数据表
+
+| 表名 | 说明 |
+|------|------|
+| `sys_user` | 用户表 |
+| `sys_department` | 部门表 |
+| `sys_role` | 角色表 |
+| `sys_permission` | 权限表 |
+| `sys_dict` | 字典表 |
+| `todo_item` | 待办事项表 |
+| `sys_activity_log` | 活动日志表 |
+| `approval` | 审批管理表 |
+| `user_notification_settings` | 用户通知设置表 |
+| `user_login_device` | 登录设备表 |
+| `login_log` | 登录日志表 |
+| `operation_log` | 操作日志表 |
 
 ## 快速开始
 
@@ -170,9 +182,9 @@ cd gov-todo-micro
 
 2. **初始化数据库**
 ```bash
-mysql -u root -p < docs/sql/init.sql
-mysql -u root -p < docs/sql/todo_item.sql
-mysql -u root -p < docs/sql/permission_role_init.sql
+mysql -u root -p < docs/sql/full_init.sql
+mysql -u root -p < docs/sql/approval.sql
+mysql -u root -p < docs/sql/system-settings.sql
 ```
 
 3. **修改配置**
@@ -238,22 +250,189 @@ mvn spring-boot:run
 | Elasticsearch | 9200 | 日志存储 |
 | Kibana | 5601 | 日志可视化 |
 
+---
+
+## API 接口
+
+### 基础路径
+
+所有接口通过网关访问：`http://localhost:8081`
+
+### 认证接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| POST | `/api/login` | 用户登录 | ✗ |
+| POST | `/api/register` | 用户注册 | ✗ |
+
+### 待办事项接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/todo/list` | 待办列表 | ✓ |
+| GET | `/api/todo/{id}` | 待办详情 | ✓ |
+| POST | `/api/todo` | 创建待办 | ✓ |
+| PUT | `/api/todo/{id}` | 更新待办 | ✓ |
+| DELETE | `/api/todo/{id}` | 删除待办 | ✓ |
+| DELETE | `/api/todo/batch` | 批量删除 | ✓ |
+| PATCH | `/api/todo/{id}/status` | 状态变更 | ✓ |
+| PATCH | `/api/todo/{id}/transfer` | 待办转交 | ✓ |
+| GET | `/api/todo/statistics` | 统计数据 | ✓ |
+
+### 活动记录接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/activities/recent` | 最近活动 | ✓ |
+| POST | `/api/activities/record` | 记录活动 | ✓ |
+
+### 用户管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/users` | 用户列表 | ✓ |
+| GET | `/api/users/{id}` | 用户详情 | ✓ |
+| POST | `/api/users` | 创建用户 | ✓ |
+| PUT | `/api/users/{id}` | 更新用户 | ✓ |
+| DELETE | `/api/users/{id}` | 删除用户 | ✓ |
+| GET | `/api/users/{id}/roles` | 用户角色 | ✓ |
+| POST | `/api/users/{id}/roles` | 分配用户角色 | ✓ |
+
+### 角色管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/roles` | 角色列表 | ✓ |
+| GET | `/api/roles/{id}` | 角色详情 | ✓ |
+| POST | `/api/roles` | 创建角色 | ✓ |
+| PUT | `/api/roles/{id}` | 更新角色 | ✓ |
+| DELETE | `/api/roles/{id}` | 删除角色 | ✓ |
+| GET | `/api/roles/{id}/permissions` | 角色权限 | ✓ |
+| POST | `/api/roles/{id}/permissions` | 分配角色权限 | ✓ |
+
+### 权限管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/permissions` | 权限列表 | ✓ |
+| GET | `/api/permissions/tree` | 权限树形 | ✓ |
+| GET | `/api/permissions/{id}` | 权限详情 | ✓ |
+| POST | `/api/permissions` | 创建权限 | ✓ |
+| PUT | `/api/permissions/{id}` | 更新权限 | ✓ |
+| DELETE | `/api/permissions/{id}` | 删除权限 | ✓ |
+
+### 部门管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/departments` | 部门列表 | ✓ |
+| POST | `/api/departments` | 创建部门 | ✓ |
+| PUT | `/api/departments/{id}` | 更新部门 | ✓ |
+| DELETE | `/api/departments/{id}` | 删除部门 | ✓ |
+
+### 字典管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/dicts` | 字典列表 | ✓ |
+| GET | `/api/dicts/{id}` | 字典详情 | ✓ |
+| GET | `/api/dicts/type/{dictType}` | 按类型获取字典 | ✓ |
+| POST | `/api/dicts` | 创建字典 | ✓ |
+| PUT | `/api/dicts/{id}` | 更新字典 | ✓ |
+| DELETE | `/api/dicts/{id}` | 删除字典 | ✓ |
+
+### 审批管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/approvals` | 审批列表 | ✓ |
+| GET | `/api/approvals/{id}` | 审批详情 | ✓ |
+| POST | `/api/approvals` | 创建审批 | ✓ |
+| DELETE | `/api/approvals/{id}` | 删除审批 | ✓ |
+| POST | `/api/approvals/{id}/approve` | 提交审批结果 | ✓ |
+
+**审批类型枚举:**
+| 类型值 | 说明 |
+|--------|------|
+| 请假申请 | 员工请假 |
+| 报销申请 | 费用报销 |
+| 加班申请 | 加班登记 |
+| 出差申请 | 出差审批 |
+| 采购申请 | 物资采购 |
+| 其他申请 | 其他审批事项 |
+
+**审批状态枚举:**
+| 状态值 | 说明 |
+|--------|------|
+| 待审批 | 等待审批 |
+| 已通过 | 审批通过 |
+| 已拒绝 | 审批拒绝 |
+
+### 系统设置接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| PUT | `/api/system/user/profile` | 更新个人信息 | ✓ |
+| POST | `/api/system/user/change-password` | 修改密码 | ✓ |
+| GET | `/api/system/settings/notification` | 获取通知设置 | ✓ |
+| PUT | `/api/system/settings/notification` | 更新通知设置 | ✓ |
+| GET | `/api/system/user/login-devices` | 获取登录设备 | ✓ |
+| DELETE | `/api/system/user/login-devices/{id}` | 单个设备下线 | ✓ |
+| DELETE | `/api/system/user/login-devices` | 全部设备下线 | ✓ |
+| GET | `/api/system/user/login-logs` | 获取登录日志 | ✓ |
+| GET | `/api/system/user/operation-logs` | 获取操作日志 | ✓ |
+
+### 模块管理接口
+
+| 方法 | 路径 | 说明 | 认证 |
+|------|------|------|------|
+| GET | `/api/modules` | 模块列表 | ✓ |
+
+---
+
+## 请求示例
+
+### 登录
+```bash
+curl -X POST http://localhost:8081/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"123456"}'
+```
+
+### 获取待办列表 (需携带 Token)
+```bash
+curl -X GET http://localhost:8081/api/todo/list \
+  -H "Authorization: Bearer {your-token}"
+```
+
+### 获取统计数据
+```bash
+curl -X GET http://localhost:8081/api/todo/statistics \
+  -H "Authorization: Bearer {your-token}"
+```
+
+### 获取最近活动
+```bash
+curl -X GET http://localhost:8081/api/activities/recent?limit=10 \
+  -H "Authorization: Bearer {your-token}"
+```
+
+### 提交审批
+```bash
+curl -X POST http://localhost:8081/api/approvals/1/approve \
+  -H "Authorization: Bearer {your-token}" \
+  -H "Content-Type: application/json" \
+  -d '{"result":"已通过","comment":"同意申请"}'
+```
+
+---
+
 ## 核心功能特性
 
 ### 1. 服务注册与发现 (Nacos)
 - 所有服务自动注册到 Nacos
 - Gateway 基于服务发现动态路由
 - 支持健康检查和故障隔离
-
-**配置示例:**
-```yaml
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-        enabled: true
-```
 
 ### 2. 统一认证 (Gateway + JWT)
 - Gateway 集中验证 JWT 令牌
@@ -275,23 +454,11 @@ spring:
 - Service 层: 基于资源的限流和降级
 - 自定义限流响应: HTTP 429
 
-**流控规则:**
-- todo-service: 100 QPS
-- system-service: 200 QPS
-
 ### 4. Redis 缓存
 - 用户查询缓存 (`@Cacheable`)
 - 待办列表缓存
 - 自动缓存失效 (`@CacheEvict`)
 - JSON 序列化配置
-
-**缓存示例:**
-```java
-@Cacheable(value = "users", key = "#username")
-public User getUserByUsername(String username) {
-    return userMapper.selectByUsername(username);
-}
-```
 
 ### 5. ELK 日志系统
 - JSON 格式日志输出
@@ -299,69 +466,13 @@ public User getUserByUsername(String username) {
 - Kibana 可视化查询
 - 多环境日志配置 (dev/prod)
 
-**部署命令:**
-```bash
-cd docs/elk
-docker-compose up -d
-```
-
 ### 6. 单元测试
 - Controller 层测试 (MockMvc)
 - Service 层测试 (Mockito)
 - JaCoCo 测试覆盖率报告
 - 通用测试工具类
 
-**运行测试:**
-```bash
-mvn clean test
-mvn jacoco:report  # 生成覆盖率报告
-```
-
 ---
-
-## API 接口
-
-### 待办事项接口 (通过网关访问)
-
-**基础路径:** `http://localhost:8081`
-
-| 方法 | 路径 | 说明 | 认证 |
-|------|------|------|------|
-| GET | `/api/todo/todos` | 获取所有待办 | ✓ |
-| GET | `/api/todo/todos/{id}` | 获取单个待办 | ✓ |
-| POST | `/api/todo/todos` | 创建待办 | ✓ |
-| PUT | `/api/todo/todos/{id}` | 更新待办 | ✓ |
-| DELETE | `/api/todo/todos/{id}` | 删除待办 | ✓ |
-| PUT | `/api/todo/todos/{id}/status` | 更新状态 | ✓ |
-| GET | `/api/todo/todos/statistics` | 统计数据 | ✓ |
-
-### 系统管理接口
-
-**基础路径:** `http://localhost:8081`
-
-| 方法 | 路径 | 说明 | 认证 |
-|------|------|------|------|
-| POST | `/api/system/user/login` | 用户登录 | ✗ |
-| POST | `/api/system/user/register` | 用户注册 | ✗ |
-| POST | `/api/system/user/resetpd` | 重置密码 | ✓ |
-| GET | `/api/system/users` | 用户列表 | ✓ |
-| GET | `/api/system/roles` | 角色列表 | ✓ |
-| GET | `/api/system/departments` | 部门列表 | ✓ |
-
-### 请求示例
-
-**登录:**
-```bash
-curl -X POST http://localhost:8081/api/system/user/login \
-  -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"123456"}'
-```
-
-**获取待办列表 (需携带 Token):**
-```bash
-curl -X GET http://localhost:8081/api/todo/todos \
-  -H "Authorization: Bearer {your-token}"
-```
 
 ## 开发指南
 
@@ -381,59 +492,13 @@ service/
 ### 统一返回格式
 
 所有接口返回统一使用 `Result` 对象封装：
-```java
+```json
 {
     "code": 200,
     "message": "success",
     "data": {}
 }
 ```
-
-## 运维与监控
-
-### Nacos 控制台
-- 访问: http://localhost:8848/nacos
-- 账号: nacos / nacos
-- 功能: 服务列表、健康检查、元数据
-
-### Sentinel 控制台
-- 访问: http://localhost:8080
-- 账号: sentinel / sentinel
-- 功能: 流控规则、降级规则、实时监控
-
-### Kibana 日志查询
-- 访问: http://localhost:5601
-- 索引模式: `gov-todo-*`
-- 常用查询:
-  ```
-  # 查看错误日志
-  level: "ERROR"
-  
-  # 查看特定服务日志
-  service_name: "gateway-server"
-  
-  # 组合查询
-  service_name: "system-service" AND level: "ERROR"
-  ```
-
-### 测试覆盖率报告
-```bash
-# 生成报告
-mvn clean test jacoco:report
-
-# 查看报告
-open target/site/jacoco/index.html
-```
-
----
-
-## 项目配置
-
-- **父 POM**: 统一管理依赖版本 (Spring Cloud, Alibaba Cloud)
-- **Settings**: `settings.xml` - Maven 配置
-- **依赖管理**: 集中在父 POM 中管理
-- **JDK 版本**: 21
-- **编码**: UTF-8
 
 ---
 
@@ -445,12 +510,16 @@ open target/site/jacoco/index.html
 - [x] ~~集成 Redis 缓存~~ ✓ 已完成
 - [x] ~~添加日志收集系统 (ELK)~~ ✓ 已完成
 - [x] ~~完善单元测试覆盖率~~ ✓ 已完成
+- [x] ~~审批管理模块~~ ✓ 已完成
+- [x] ~~系统设置模块~~ ✓ 已完成
+- [x] ~~活动记录模块~~ ✓ 已完成
 - [ ] 添加 Docker 容器化支持
-- [ ] 集成配置中心 (Nacos Config)
 - [ ] 添加分布式事务支持 (Seata)
 - [ ] 集成链路追踪 (SkyWalking)
 - [ ] 添加 API 文档 (Swagger/Knife4j)
 - [ ] 完善 CI/CD 流水线
+
+---
 
 ## 许可证
 
