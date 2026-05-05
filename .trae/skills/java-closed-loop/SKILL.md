@@ -1,6 +1,6 @@
 ---
 name: Java闭环开发与测试技能
-description: 严格闭环Java开发流程：需求→设计→编码→自测→单元测试→接口测试→集成测试→验收
+description: 严格闭环Java开发流程：需求→设计→编码→自测→单元测试→接口测试→集成测试→问题修复→修复测试→集成测试→验收
 trigger: Java开发、代码编写、单元测试、接口测试、代码审查、开发流程
 version: 1.0
 author: chengbin
