@@ -36,6 +36,15 @@ public class UserController {
      */
     @PostMapping("/login")
     public Result<LoginResponse> login(@RequestBody LoginRequest request, HttpServletRequest httpRequest) {
+        if (request == null) {
+            return Result.error("登录请求不能为空");
+        }
+        if (request.getUsername() == null || request.getUsername().trim().isEmpty()) {
+            return Result.error("用户名不能为空");
+        }
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            return Result.error("密码不能为空");
+        }
         String ip = getClientIp(httpRequest);
         LoginResponse response = userService.login(request, ip);
         return Result.success(response, "登录成功");
@@ -48,7 +57,18 @@ public class UserController {
      */
     @PostMapping("/register")
     public Result<Boolean> register(@RequestBody RegisterRequest request) {
-        // 检查用户名是否已存在
+        if (request == null) {
+            return Result.error("注册请求不能为空");
+        }
+        if (request.getUsername() == null || request.getUsername().trim().isEmpty()) {
+            return Result.error("用户名不能为空");
+        }
+        if (request.getPassword() == null || request.getPassword().length() < 6) {
+            return Result.error("密码不能少于6位");
+        }
+        if (request.getRealName() == null || request.getRealName().trim().isEmpty()) {
+            return Result.error("真实姓名不能为空");
+        }
         User existingUser = userService.selectByUsername(request.getUsername());
         if (existingUser != null) {
             return Result.error("用户名已存在");
@@ -64,6 +84,18 @@ public class UserController {
      */
     @PostMapping("/resetpd")
     public Result<String> resetPassword(@RequestBody ResetPasswordRequest request) {
+        if (request == null) {
+            return Result.error("密码重置请求不能为空");
+        }
+        if (request.getUsername() == null || request.getUsername().trim().isEmpty()) {
+            return Result.error("用户名不能为空");
+        }
+        if (request.getOldPassword() == null || request.getOldPassword().isEmpty()) {
+            return Result.error("旧密码不能为空");
+        }
+        if (request.getNewPassword() == null || request.getNewPassword().length() < 6) {
+            return Result.error("新密码不能少于6位");
+        }
         return userService.resetPassword(request);
     }
 

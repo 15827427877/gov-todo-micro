@@ -11,12 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,7 +42,10 @@ public class UserControllerTest {
 
         when(userService.login(any(LoginRequest.class), anyString())).thenReturn(response);
 
-        Result<LoginResponse> result = userController.login(request, null);
+        HttpServletRequest httpRequest = mock(HttpServletRequest.class);
+        when(httpRequest.getHeader("X-Forwarded-For")).thenReturn("127.0.0.1");
+
+        Result<LoginResponse> result = userController.login(request, httpRequest);
         
         assertNotNull(result);
         assertEquals(200, result.getCode());

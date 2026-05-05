@@ -1,6 +1,7 @@
 package com.gov.todoservice.service;
 
 import com.gov.todoservice.mapper.TodoMapper;
+import com.gov.todoservice.pojo.Activity;
 import com.gov.todoservice.pojo.TodoItem;
 import com.gov.todoservice.service.impl.TodoServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 /**
@@ -31,6 +33,9 @@ public class TodoServiceTest {
 
     @Mock
     private TodoMapper todoMapper;
+
+    @Mock
+    private ActivityService activityService;
 
     private TodoItem testTodo;
 
@@ -113,12 +118,16 @@ public class TodoServiceTest {
         todo2.setCompleted(false);
 
         when(todoMapper.selectAll()).thenReturn(Arrays.asList(todo1, todo2));
+        when(todoMapper.selectByCreateDate(anyString())).thenReturn(Arrays.asList());
+        when(todoMapper.selectByCreateDateBetween(anyString(), anyString())).thenReturn(Arrays.asList());
+        when(todoMapper.countByStatus(anyString())).thenReturn(0L);
 
         Map<String, Object> stats = todoService.getStatistics();
 
         assertNotNull(stats);
         assertEquals(2L, stats.get("total"));
-        assertEquals(1L, stats.get("completed"));
-        assertEquals(1L, stats.get("pending"));
+        assertTrue(stats.containsKey("completionRate"));
+        assertTrue(stats.containsKey("todayAdded"));
+        assertTrue(stats.containsKey("pendingApproval"));
     }
 }

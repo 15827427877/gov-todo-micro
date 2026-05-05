@@ -54,6 +54,16 @@ public class UserServiceImpl implements UserService {
     @Override
     @SentinelResource(value = "userLogin", blockHandler = "loginBlockHandler")
     public LoginResponse login(LoginRequest request, String ip) {
+        if (request == null) {
+            throw new IllegalArgumentException("登录请求不能为空");
+        }
+        if (request.getUsername() == null || request.getUsername().trim().isEmpty()) {
+            throw new IllegalArgumentException("用户名不能为空");
+        }
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            throw new IllegalArgumentException("密码不能为空");
+        }
+        
         // 查找用户
         User user = userMapper.selectByUsername(request.getUsername());
         if (user == null) {
@@ -66,20 +76,9 @@ public class UserServiceImpl implements UserService {
         }
 
         // 验证密码
-        try {
-            if (!PasswordUtils.matches(request.getPassword(), user.getPassword())) {
-                throw new RuntimeException("用户名或密码错误");
-            }
-        } catch (Exception e) {
-            // 如果密码验证失败，检查用户输入的密码是否是默认密码
-            if ("123456".equals(request.getPassword())) {
-                // 如果是默认密码，重新加密并更新到数据库
-                String encryptedPassword = PasswordUtils.encrypt(request.getPassword());
-                user.setPassword(encryptedPassword);
-                userMapper.update(user);
-            } else {
-                throw new RuntimeException("用户名或密码错误");
-            }
+        if (!PasswordUtils.matches(request.getPassword(), user.getPassword())) {
+            LogUtils.warn(UserServiceImpl.class, "密码验证失败: username={}", request.getUsername());
+            throw new RuntimeException("用户名或密码错误");
         }
 
         // 更新登录信息
@@ -121,6 +120,16 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean register(RegisterRequest request) {
+        if (request == null) {
+            throw new IllegalArgumentException("注册请求不能为空");
+        }
+        if (request.getUsername() == null || request.getUsername().trim().isEmpty()) {
+            throw new IllegalArgumentException("用户名不能为空");
+        }
+        if (request.getPassword() == null || request.getPassword().length() < 6) {
+            throw new IllegalArgumentException("密码不能少于6位");
+        }
+        
         // 创建新用户
         User user = new User();
         user.setUsername(request.getUsername());
@@ -249,11 +258,16 @@ public class UserServiceImpl implements UserService {
     @Override
     @CacheEvict(value = "users", key = "#user.username")
     public User updateUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("用户信息不能为空");
+        }
+        LogUtils.info(UserServiceImpl.class, "更新用户: id={}, username={}", user.getId(), user.getUsername());
         // 如果密码不为空，则加密
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
             user.setPassword(PasswordUtils.encrypt(user.getPassword()));
         }
         userMapper.update(user);
+        LogUtils.info(UserServiceImpl.class, "更新用户成功: id={}", user.getId());
         return userMapper.selectById(user.getId());
     }
 
@@ -265,7 +279,16 @@ public class UserServiceImpl implements UserService {
     @Override
     @CacheEvict(value = "users", allEntries = true)
     public boolean deleteUser(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("用户ID不能为空");
+        }
+        LogUtils.info(UserServiceImpl.class, "删除用户: id={}", id);
         int result = userMapper.deleteById(id);
+        if (result > 0) {
+            LogUtils.info(UserServiceImpl.class, "删除用户成功: id={}", id);
+        } else {
+            LogUtils.warn(UserServiceImpl.class, "删除用户失败: id={}", id);
+        }
         return result > 0;
     }
 
