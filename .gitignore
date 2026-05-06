@@ -4,6 +4,8 @@
 # Log files
 *.log
 logs/
+*.log
+*.json.log
 *.log.*
 
 # IDE directories
@@ -22,6 +24,7 @@ logs/
 
 # Maven build output
 target/
+.mvn/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
